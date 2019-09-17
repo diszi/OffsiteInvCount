@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:orientation="vertical"-->
+<!--&gt;-->
+
+<!--&lt;!&ndash;<ScrollView&ndash;&gt;-->
+<!--&lt;!&ndash;android:id="@+id/countbookline_scrollView"&ndash;&gt;-->
+<!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;android:isScrollContainer="true"&ndash;&gt;-->
+<!--&lt;!&ndash;&gt;&ndash;&gt;-->
+
+
+<!--<Button-->
+<!--android:id="@+id/countBook_equipmentNumber"-->
+<!--android:layout_width="200dp"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:text="Equipment nr"-->
+<!--android:textSize="20dp"-->
+<!--android:layout_gravity="center"-->
+<!--android:textColor="@color/colorPrimary"-->
+<!--android:layout_margin="10dp"-->
+<!--android:background="@drawable/button_shape"/>-->
+
+<!--&lt;!&ndash;</ScrollView>&ndash;&gt;-->
+<!--</LinearLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/countBookCardView"
+        style="@style/CardViewStyle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/countbookLineCardViewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="1071"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp" />
+            <!--android:textColor="@android:color/background_light"-->
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <!--</LinearLayout>-->
+</LinearLayout>

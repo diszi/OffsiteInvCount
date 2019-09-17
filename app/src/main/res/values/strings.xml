@@ -1,0 +1,234 @@
+<resources>
+    <string name="app_name">OffsiteInvCount</string>
+
+    <string name="error_unknown">Unknown Error</string>
+    <string name="error_wrongUser">Wrong User</string>
+    <string name="error_authFailed">Authentication Failed</string>
+    <string name="error_network">Network Error</string>
+    <string name="error_general">General Error</string>
+
+
+
+
+
+        <!--<string name="app_name">Offsite_WH</string>-->
+        <string name="app_permissionMsg">Please enable all permission</string>
+        <string name="app_permissionGranted">Permission granted</string>
+        <string name="app_permissionEnable">ENABLE</string>
+
+        <string name="actLogin_loginButton">LOGIN</string>
+        <string name="actLogin_loginNameHint">Username</string>
+        <string name="actLogin_loginPasswordHint">Password</string>
+        <string name="error_isRequired">Required</string>
+        <!--<string name="error_wrongUser">Wrong User</string>-->
+        <!--<string name="error_authFailed">Authetntication Failed</string>-->
+        <!--<string name="error_unknown">Unknown Error</string>-->
+        <string name="error_network_2">Network is unreachable</string>
+        <!--<string name="error_network">Network Error</string>-->
+        <!--<string name="error_general">General Error</string>-->
+        <string name="actDetails_chooseButton">Choose file to upload...</string>
+        <string name="settings_error_msg">The specified value is greater than the allowed value</string>
+
+        <string name="actGeneral_identifyText">Please identify yourself</string>
+        <string name="act_hintLaborCode">Labor code</string>
+        <string name="actGeneral_workorderText">Add work order</string>
+
+
+
+
+        <string name="actLogout">Logout</string>
+
+
+
+        <!--<string name="settings_log_level_debug">Debug</string>-->
+        <!--<string name="settings_log_level_error">Error</string>-->
+
+        <string name="defaultValue_language" translatable="false">HU</string>
+
+
+        <string name="menu_settings">Settings</string>
+        <string name="menu_about">About</string>
+        <string name="menu_update">Update</string>
+
+
+        <string name="sharedPreference_getDate" translatable="false">pressNo</string>
+        <string name="dialogUpdateApp_offlineMode">Internet connection is not available! Connect to the internet!</string>
+        <string name="dialogUpdateApp_mobilNetQuestion">Mobile data is active.  Are you sure you want to update the app?</string>
+        <string name="dialogUpdateApp_message">New version is available!  Would you like to update the app?</string>
+        <string name="dialogUpdateApp_versionNr">Version: </string>
+        <string name="download_resultMessageOk">Update Done</string>
+        <string name="download_resultMessageError">Error: Try Again</string>
+        <string name="download_msg">Downloading... </string>
+        <string name="finish_msg">Finishing... </string>
+
+        <string name="country_prompt">Choose a country</string>
+
+        <string name="defaultValue_timeOut" translatable="false">12</string>
+
+
+        <!--INVENTORY DETAILS TAB-->
+        <!--<string name="inventory_YES">Yes</string>-->
+        <!--<string name="inventory_NO">No</string>-->
+
+
+
+        <string name="inventory_title">Inventory</string>
+        <string name="picking_title">Picking list</string>
+        <string name="invCount_title">Inventory Counting</string>
+        <string name="invBalance_title">Inventory Balance list</string>
+        <string name="details_title">Details</string>
+
+
+
+        <!--QUESTION ALERT-->
+        <string name="onBackPress_question">Save Usage lines before back press?</string>
+        <string name="transfer_question">Save current transfer before back press?</string>
+        <string name="inboundShipment_question">Are you sure that saved inbound shipment?</string>
+        <string name="logout_question">Are you sure that log out from application?</string>
+
+
+
+        <!--BUTTON-->
+        <string name="text_CANCEL">Cancel</string>
+        <string name="text_YES">Yes</string>
+        <string name="text_NO">No</string>
+        <string name="text_OK" translatable="false">Ok</string>
+        <string name="text_NEW">NEW</string>
+        <string name="text_SAVE">SAVE</string>
+        <string name="text_BACK">BACK</string>
+        <string name="text_SEARCH">SEARCH</string>
+
+        <!--INBOUND-->
+        <string name="text_inbound_title">Inbound Shipment</string>
+        <string name="text_inbound_awb">AWB/HAWB:</string>
+        <string name="text_inbound_parent_awb">Parent AWB:</string>
+        <string name="text_inbound_duty">Duty:</string>
+        <string name="text_inbound_prodTAX">Product TAX:</string>
+        <string name="text_inbound_nrpieces">Number of pieces:         (received boxes/total box)</string>
+        <string name="text_inbound_nrpieces_2">Number of pieces: (received boxes/total box)</string>
+        <string name="text_inbound_weight">Weight (kg):</string>
+        <string name="text_inbound_dim">Dimension (cm):</string>
+        <string name="text_inbound_country">Country:</string>
+        <string name="text_inbound_sender">Sender:</string>
+        <string name="text_inbound_date">Inbound date:</string>
+
+        <!--SEARCH-->
+        <string name="text_search_subtitle">Search fields: P/N, description</string>
+        <string name="text_search_title">Please scan barcode/QR code!</string>
+
+        <!--INVENTORY-->
+        <!--<string name="inventoryDetails_title">Details</string>-->
+        <string name="inventoryHistory_title">History</string>
+        <string name="inventoryHistoryIssueReturn_title">Issue - Return</string>
+        <string name="inventoryRotables_title">Rotables</string>
+        <string name="inventoryInvBalance_title">Inv. balance</string>
+
+        <!--PART NUMBER-->
+
+        <string name="partnumberHazards_title">Hazards</string>
+        <string name="partnumberUNnumber_title">UN-number(ADR)</string>
+        <string name="partnumberStorerooms_title">Storerooms</string>
+        <string name="partnumberInterchangeable_title">Interchangeable</string>
+        <string name="label_fire_class">Fire Class:</string>
+        <string name="label_cas_nr">CAS number:</string>
+        <string name="label_cas_desc">CAS description:</string>
+        <string name="label_unnumber">Un-number (ADR):</string>
+        <string name="lable_unclass">UN Class:</string>
+        <string name="label_unclass_code">UN Class Code:</string>
+        <string name="label_label">Label:</string>
+        <string name="lable_packing">Packing:</string>
+        <string name="label_packing_instruction">Packing instruction:</string>
+        <string name="label_spec_desc">Special desc:</string>
+
+        <!--TRANSFER-->
+        <string name="label_transfer_subtitle">Usage lines</string>
+        <string name="text_COMPLETE">COMPLETE</string>
+        <string name="label_select_rotasset">Select rotable asset</string>
+        <string name="default_rot_qty">1.0</string>
+        <string name="dialog_asset_title">Choose Asset!</string>
+
+        <!--DIALOG TITLE-->
+        <string name="dialog_issue_return_title">Issue - Return History details:</string>
+        <string name="dialog_history_title">History details:</string>
+        <string name="dialog_title">Choose Storeroom!</string>
+        <string name="dialog_alert_partnr">Scan Part Number</string>
+        <string name="dialog_picking_choose">Choose usage number/line!</string>
+
+
+        <!--WINDOW LABELS-->
+        <string name="label_pn">P/N:</string>
+        <string name="label_partnumber">Part number:</string>
+        <string name="label_defaultbin">Default bin:</string>
+        <string name="label_storeroom">Storeroom:</string>
+        <string name="label_currbalance">Current Balance:</string>
+        <string name="label_rotable">Rotable:</string>
+        <string name="label_status">Status:</string>
+        <string name="label_serialnumber">SN: </string>
+        <string name="label_assetnumber">Asset num:</string>
+        <string name="label_binnumber">Bin:</string>
+        <string name="label_batch">Batch: </string>
+        <string name="label_expiration_date">Expiration Date:</string>
+        <string name="label_receipt_insp">Receipt and Inspection:</string>
+        <string name="label_line">Line:</string>
+        <string name="label_receipt_date">Receipt Date:</string>
+        <string name="label_insp_status">Inspection Status:</string>
+        <string name="label_serialnumber_2">Serial number:</string>
+        <string name="label_qty_serviceable">Quantity Serviceable:</string>
+        <string name="label_qty_quarantined">Quantity Quarantined:</string>
+        <string name="label_qty_returned">Quantity Returned:</string>
+        <string name="label_qty_scrapped">Quantity Scrapped:</string>
+        <string name="label_transaction_type">Transaction Type:</string>
+        <string name="label_transaction_date">Transaction Date:</string>
+        <string name="label_quantity">Quantity:</string>
+        <string name="label_quantity_2">Quantity</string>
+        <string name="label_workorder">Work Order:</string>
+        <string name="label_aircraft_registration">Aircraft Registration:</string>
+        <string name="label_issue_to">Issue To:</string>
+        <string name="label_usagenumber">Usage number:</string>
+        <string name="label_registration">Registration:</string>
+        <string name="label_rot_assestnum">Rotable asset number:</string>
+        <string name="labe_location">Location:</string>
+        <string name="label_enter_by">Enter by:</string>
+        <string name="label_from_storeloc">From Storelocation:</string>
+        <string name="label_from_bin">From Bin:</string>
+        <string name="label_from_batch">From Batch:</string>
+        <string name="label_to_storeloc">To Storelocation:</string>
+        <string name="label_to_bin">To Bin:</string>
+        <string name="label_to_bin_2">To Bin</string>
+        <string name="label_to_batch">To Batch:</string>
+        <string name="label_physical_count">Physical count:</string>
+        <string name="label_ata_code">ATA code:</string>
+        <string name="label_batch_type">Batch Type:</string>
+        <string name="label_qty">QTY:</string>
+        <string name="label_to_storeroom">To Storeroom:</string>
+        <string name="label_to_storeroom_2">To Storeroom</string>
+        <string name="label_issue_unit">Issue Unit:</string>
+
+
+        <string name="label_empty">Empty</string>
+        <string name="label_description">Description:</string>
+        <string name="label_notes">Notes:</string>
+        <string name="label_entered_by">Entered by:</string>
+        <string name="label_entered_date">Entered date:</string>
+
+
+        <string name="imagebutton_checked">checked_pickingitem</string>
+        <string name="imagebutton_unchecked">unchecked_pickingItem</string>
+
+
+        <!--ERROR MSG-->
+        <string name="error_qty_required">Quantity is required!</string>
+        <string name="error_qty_physical_count">Quantity must be less than or equal to physical count</string>
+        <string name="error_storeroom_required">Storeroom is required!</string>
+        <string name="error_bin_required">Bin number is required!</string>
+        <string name="error_tobin_equal_frombin">To Bin is the same as the From Bin</string>
+        <string name="error_in_scanning">Error in scanning...</string>
+
+        <string name="alert_select_asset">Please select Asset!</string>
+        <string name="alert_invalid_input">Invalid input datas!</string>
+        <string name="alert_succes_transfer_lineadded">Inventory usage line successfully added!</string>
+        <string name="alert_succes_transfer">Inventory usage completed!</string>
+
+
+
+</resources>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--tools:context=".ui.functions.inventoryCount.InventoryCountListActivity">-->
+    <!--<ProgressBar-->
+    <!--android:id="@+id/actInvCountBookLines_progressBar"-->
+    <!--style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:indeterminate="true"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"/>-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/actList_toolbar" />-->
+
+    <ProgressBar
+        android:id="@+id/loading_progessBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/actHazards_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/actHazards_swipeRefreshLayout"
+        android:paddingTop="10dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="3dp"
+            >
+
+            <TextView
+                android:id="@+id/invCount_countbook_nr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="numer"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/invCount_storeroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="storeroom"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/invCount_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="status"
+                android:textSize="14sp"/>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Count Book Lines"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"/>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+        <!--<View style="@style/Divider" />-->
+        <!--</LinearLayout>-->
+
+        <View
+            android:layout_height="1dip"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent" />
+
+        <LinearLayout
+            android:id = "@+id/titlelayout"
+            android:layout_width = "fill_parent"
+            android:layout_height = "wrap_content"
+            >
+
+
+            <TextView
+                android:layout_width = "0dp"
+                android:layout_height = "wrap_content"
+                android:layout_weight = "2.0"
+                android:gravity = "center"
+                android:padding = "5dp"
+                android:text = "Part number"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width = "0dp"
+                android:layout_height = "wrap_content"
+                android:layout_weight = "2.0"
+                android:gravity = "center"
+                android:padding = "5dp"
+                android:text = "Equipment"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="R."
+                android:textStyle="bold"
+                android:padding="5dp"
+               />
+
+
+
+        </LinearLayout>
+
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/actInvCountBookLines_swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/actInvCountBookLines_linearLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actInvCountBookLines_progressBar">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/actInvCountBookLines_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/actInvCountBookLines_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

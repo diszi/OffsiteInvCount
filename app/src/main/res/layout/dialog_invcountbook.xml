@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:maxHeight="400dp"
+    android:minWidth="335dp"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_shape">
+
+    <TextView
+        android:id="@+id/dialogInvCount_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@color/colorPrimary"
+        android:text="TextView" />
+
+    <ScrollView
+        android:id="@+id/actInvCount_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp">
+
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_marginTop="5dp">-->
+
+            <!--<TextView-->
+            <!--style="@style/Inventory_LabelDetail"-->
+            <!--android:text="Reconcile?" />-->
+
+            <!--<CheckBox-->
+            <!--android:id="@+id/invCountBook_reconcile"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ellipsize="end"-->
+            <!--android:clickable="false"-->
+            <!--android:theme="@style/MyCheckbox"-->
+
+            <!--/>-->
+            <!--</LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Bin:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_bin"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Batch:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_batch"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Part number:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_partnr"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Rotable:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_rotable"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Serial number:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_serialnr"
+                    style="@style/Inventory_TextDetail"
+                    android:maxLines="3" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Equipment:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_equipment"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Current balance:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_curbal"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+
+
+            <!--<ImageButton-->
+            <!--android:id="@+id/actInventoryCount_updateBtn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentEnd="true"-->
+
+            <!--android:layout_gravity="center"-->
+            <!--android:backgroundTint="@android:color/transparent"-->
+            <!--android:src="@drawable/ic_check_black_24dp" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/countDate_label"
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Count date:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_countdate"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/countedBy_label"
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Counted by:" />
+
+                <TextView
+                    android:id="@+id/invCountBook_countedBy"
+                    style="@style/Inventory_TextDetail"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="Physical count:"
+                    android:paddingTop="10dp"/>
+
+                <!--<EditText-->
+                    <!--android:id="@+id/invCountBook_physicalcount"-->
+                    <!--style="@style/TextDetail"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="1.0"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:inputType="number"-->
+                    <!--/>-->
+
+                <TextView
+                    android:id="@+id/invCountBook_physicalcount_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/invCountBook_physicalcount"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:inputType="numberDecimal"
+                    />
+
+                <ImageButton
+                    android:id="@+id/invCountBook_modifyIcon"
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_edit" />
+
+                <!--<TextView-->
+                    <!--android:id="@+id/invCountBook_physicalcount_text"-->
+                    <!--android:layout_width="100dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="16sp"/>-->
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/dialogInvCountBook_saveBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape"
+            android:text="SAVE"
+            android:textColor="@color/colorAccent"
+            android:textSize="14dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
+            />
+
+        <Button
+            android:id="@+id/dialogInvCountBook_cancelBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape"
+            android:text="CANCEL"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

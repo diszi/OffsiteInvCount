@@ -1,0 +1,152 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:id="@+id/actDetails_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="false">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_partnumber" />
+
+                <TextView
+                    android:id="@+id/invDetails_partnumber"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+
+            <View style="@style/Divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_description" />
+
+                <TextView
+                    android:id="@+id/actDetails_description"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+
+            <View style="@style/Divider" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_defaultbin" />
+
+                <TextView
+                    android:id="@+id/actDetails_shelfbin"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <View style="@style/Divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_storeroom" />
+
+                <TextView
+                    android:id="@+id/actDetails_storeroom"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <View style="@style/Divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_currbalance" />
+
+                <TextView
+                    android:id="@+id/actDetails_currentBalance"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <View style="@style/Divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_rotable" />
+
+                <TextView
+                    android:id="@+id/actDetails_rotable"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <View style="@style/Divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_status" />
+
+                <TextView
+                    android:id="@+id/actDetails_status"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

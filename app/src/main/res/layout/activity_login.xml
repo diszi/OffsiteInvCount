@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1.6"
+
+            />
+
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1.6"
+            android:fontFamily="Arial"
+            android:text="@string/app_name"
+            android:textSize="17dp"
+            android:gravity="right"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:layout_editor_absoluteY="124dp">
+
+        <!--<ImageView-->
+            <!--android:layout_width="169dp"-->
+            <!--android:layout_height="170dp"-->
+            <!--android:src="@mipmap/ic_launcher_foreground" />-->
+
+
+
+        <EditText
+            android:id="@+id/actLogin_Name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="username"
+            android:text="maxadmin"
+            android:inputType="textCapCharacters"
+            android:nextFocusDown="@id/actLogin_Password"
+
+            />
+        <!--android:text="maxadmin"-->
+        <!--android:imeOptions="actionNext"-->
+
+        <EditText
+            android:id="@+id/actLogin_Password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="password"
+            android:text="He11oo70."
+
+            />
+        <!--android:text="He11oo70."-->
+
+        <Button
+            android:id="@+id/actLogin_Button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="LOGIN"
+            android:textColor="@android:color/background_light" />
+
+        <ProgressBar
+            android:id="@+id/actLogin_ProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/actSelectIP_button"
+        android:layout_width="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_height="match_parent"
+        android:text="Select Environment"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:background="#e6e6eb"
+        />
+
+
+</LinearLayout>
