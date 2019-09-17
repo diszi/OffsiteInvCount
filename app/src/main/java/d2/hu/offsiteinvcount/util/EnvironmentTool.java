@@ -1,24 +1,33 @@
 package d2.hu.offsiteinvcount.util;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import d2.hu.offsiteinvcount.BuildConfig;
+
 public class EnvironmentTool {
 
-    public static String convertDate(Date date, String pattern){
-        return new SimpleDateFormat(pattern).format(date);
+
+    //get app version
+    public static String getVersionApp(){
+        int versionCode = BuildConfig.VERSION_CODE;
+        String versionName = BuildConfig.VERSION_NAME;
+        return versionName;
     }
+
+
+
+
+   /* public static String convertDate(Date date, String pattern){
+        return new SimpleDateFormat(pattern).format(date);
+    }*/
 
 
 
     //barcode scan
     public static String scannedDataVerification_partnumber(String scanData){
         String validpartnum=null;
-
-        //System.out.println(" 1.SCANNED DATA length="+scanData.length());
 
         if (scanData.length()>36){
 
@@ -27,26 +36,22 @@ public class EnvironmentTool {
             validpartnum = scanData;
         }
 
-        // System.out.println(" 4.VALID PART NUMBER = "+validpartnum);
         return validpartnum;
     }
 
 
-    public static String getPartNum_oldbarcode(String partnumber_old){
+    private static String getPartNum_oldbarcode(String partnumber_old){
 
         String validPartnum= null;
 
         int  counter=partnumber_old.length()-1;
 
-        //System.out.println(" 2. partnum_old="+partnumber_old+"; length="+partnumber_old.length()+"; counter="+counter);
 
         while (counter>=0){
 
             if (partnumber_old.charAt(counter) == ' '){
-                //System.out.println(" == SPACE");
 
             }else{
-                //System.out.println(" != SPACE : "+partnumber_old.charAt(counter));
 
                 break;
             }
@@ -56,7 +61,6 @@ public class EnvironmentTool {
 
         validPartnum = partnumber_old.substring(0,counter+1);
 
-        // System.out.println(" 3. counter="+counter);
 
         return validPartnum;
     }
@@ -74,7 +78,7 @@ public class EnvironmentTool {
         return outFormat.format(destDate);
     }
 
-    public static String convertDateTimeStringEN(String createdDate){
+    /*public static String convertDateTimeStringEN(String createdDate){
         SimpleDateFormat inFormat = new SimpleDateFormat(UIConstans.DATE_PATTERN_STANDARD); //datePattern
         SimpleDateFormat outFormat = new SimpleDateFormat(UIConstans.DATE_PATTERN_EN);
         Date destDate  = null;
@@ -115,6 +119,6 @@ public class EnvironmentTool {
         System.out.println(" ENCODED VALUE = "+returnValue);
         return returnValue;
 
-    }
+    }*/
 
 }

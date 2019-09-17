@@ -23,7 +23,6 @@ public class HttpRequestAsyncTask extends AsyncTask<HttpCall, String, String> {
         HttpURLConnection urlConnection = null;
         HttpCall httpCall = httpCalls[0];
 
-        //System.out.println(" HttpCall[0]="+httpCall.getUrl()+"; "+httpCall.getMethod());
 
 
         try {
@@ -32,14 +31,12 @@ public class HttpRequestAsyncTask extends AsyncTask<HttpCall, String, String> {
 
 
             int statusCode = urlConnection.getResponseCode();
-            // System.out.println(" > STATUS CODE = "+statusCode+" ; "+urlConnection.getResponseMessage());
-            Log.i("----------> ","connection: "+statusCode+"; "+urlConnection.getResponseMessage());
+
+            Log.i("------------------>","connection: "+statusCode+"; "+urlConnection.getResponseMessage());
             if (statusCode / 100 != 2) {
 
                 this.message = urlConnection.getResponseMessage();
                 this.response = message;
-
-                //System.out.println(" > STATUS CODE = "+statusCode+" + message = "+message);
 
             }
 
@@ -47,7 +44,7 @@ public class HttpRequestAsyncTask extends AsyncTask<HttpCall, String, String> {
             InputStreamReader streamReader = new
                     InputStreamReader(urlConnection.getInputStream());
             this.response = convertInputStreamToString(streamReader);
-            //System.out.println( " > RESPONSE = "+response);
+
             return response;
 
         } catch (IOException e) {
@@ -61,7 +58,7 @@ public class HttpRequestAsyncTask extends AsyncTask<HttpCall, String, String> {
 
     }
 
-    public static String convertInputStreamToString(InputStreamReader inputStreamReader) throws IOException {
+    private static String convertInputStreamToString(InputStreamReader inputStreamReader) throws IOException {
         if (inputStreamReader == null) {
             return "";
         }
@@ -84,17 +81,14 @@ public class HttpRequestAsyncTask extends AsyncTask<HttpCall, String, String> {
 
     private HttpURLConnection getHttpConnection(HttpCall httpCall) throws IOException {
 
-        //URL url = new URL(httpCall.getMethodtype() == HttpCall.GET ? httpCall.getUrl() + dataParams : httpCall.getUrl());
         URL url = new URL(httpCall.getUrl());
 
+        Log.d("------------------>","URL = "+url+"; method="+httpCall.getMethod());
 
-
-        System.out.println( " URL = "+url+"; method = "+httpCall.getMethod());
 
         HttpURLConnection connection = (HttpURLConnection)
                 url.openConnection();
 
-//        connection.setRequestMethod(httpCall.getMethodtype() == HttpCall.GET ? "GET":"POST");
         connection.setRequestMethod(httpCall.getMethod().getValue());
 
         connection.setRequestProperty("Accept", "application/xml");
@@ -104,13 +98,9 @@ public class HttpRequestAsyncTask extends AsyncTask<HttpCall, String, String> {
         connection.setReadTimeout(30000);
         connection.setConnectTimeout(30000);
 
-
-//        if (httpCall.getMethodtype() == HttpCall.POST) {
-//        if (httpCall.getMethod()== HttpCall.RequestMethod.POST || httpCall.getMethod()==HttpCall.RequestMethod.PUT){
         if (httpCall.getMethod()== HttpCall.RequestMethod.POST){
             connection.setDoInput(true);
             connection.setDoOutput(true);
-
 
             OutputStream os = connection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, UTF_8));

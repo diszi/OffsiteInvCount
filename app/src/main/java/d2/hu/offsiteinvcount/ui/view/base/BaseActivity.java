@@ -25,7 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        //System.out.println(" BaseActivity >> basePresenter = "+getBasePresenter());
         getBasePresenter().onDestroy();
 
     }

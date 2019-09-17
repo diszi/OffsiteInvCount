@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,10 +23,6 @@ import d2.hu.offsiteinvcount.ui.view.inventoryCount.InventoryCountBookLinesActiv
 
 public class InvCountBookLineChooseDialog  extends DialogFragment {
 
-    public static String SERIALIZABLE_NAME = "InvCountBookLineChooseDialog_serializable";
-
-
-    private ArrayList<InventoryCount.CountBookLine> lineList = new ArrayList<>();
     private Map<Integer,InventoryCount.CountBookLine> lineMap = new HashMap<>();
 
     private InvCountBookChooseLineAdapter adapter;
@@ -43,16 +38,10 @@ public class InvCountBookLineChooseDialog  extends DialogFragment {
 
 
         if (getArguments()!=null){
-            // lineList = (ArrayList<InventoryCount.CountBookLine>)getArguments().getSerializable(InventoryCount.CountBookLine.SERIALIZABLE_NAME);
             lineMap = (HashMap<Integer,InventoryCount.CountBookLine>)getArguments().getSerializable(InventoryCount.CountBookLine.SERIALIZABLE_NAME);
         }
-        //System.out.println(" LINE LISt = "+lineList.size());
-
-
-
 
         this.activity= (InventoryCountBookLinesActivity) getActivity();
-        // System.out.println(" getActivity() = "+this.activity);
     }
 
 

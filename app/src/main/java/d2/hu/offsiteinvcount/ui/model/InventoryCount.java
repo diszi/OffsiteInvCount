@@ -12,9 +12,6 @@ public class InventoryCount  implements Serializable {
     private String storeroom;//STOREROOM
     private String countBookID;
 
-    //if status==INPRG  ==> lehet leltarozni
-
-    //LISTA
     private List<CountBookLine> countBookLineList;
 
 

@@ -25,21 +25,19 @@
             android:id="@+id/version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1.6"
-
-            />
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1.6" />
 
         <TextView
             android:id="@+id/appName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1.6"
             android:fontFamily="Arial"
             android:text="@string/app_name"
-            android:textSize="17dp"
-            android:gravity="right"/>
+            android:textSize="17sp"
+            android:gravity="end"/>
 
     </LinearLayout>
 
@@ -50,7 +48,6 @@
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-
         android:layout_marginTop="0dp"
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,10 +62,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="320dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -76,12 +70,11 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         tools:layout_editor_absoluteY="124dp">
 
-        <!--<ImageView-->
-            <!--android:layout_width="169dp"-->
-            <!--android:layout_height="170dp"-->
-            <!--android:src="@mipmap/ic_launcher_foreground" />-->
-
-
+        <ImageView
+            android:layout_width="169dp"
+            android:layout_height="170dp"
+            android:src="@mipmap/ic_launcher_foreground"
+            android:contentDescription="@string/actLogin_loginButton"/>
 
         <EditText
             android:id="@+id/actLogin_Name"
@@ -90,11 +83,7 @@
             android:hint="username"
             android:text="maxadmin"
             android:inputType="textCapCharacters"
-            android:nextFocusDown="@id/actLogin_Password"
-
-            />
-        <!--android:text="maxadmin"-->
-        <!--android:imeOptions="actionNext"-->
+            android:nextFocusDown="@id/actLogin_Password"/>
 
         <EditText
             android:id="@+id/actLogin_Password"
@@ -102,17 +91,14 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="password"
-            android:text="He11oo70."
-
-            />
-        <!--android:text="He11oo70."-->
+            android:text="He11oo70."/>
 
         <Button
             android:id="@+id/actLogin_Button"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="LOGIN"
+            android:text="@string/actLogin_loginButton"
             android:textColor="@android:color/background_light" />
 
         <ProgressBar

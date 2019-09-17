@@ -23,7 +23,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:background="@color/colorPrimary"
-        android:text="TextView" />
+        />
 
     <ScrollView
         android:id="@+id/actInvCount_scrollView"
@@ -35,32 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp">
-
-
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_marginTop="5dp">-->
-
-            <!--<TextView-->
-            <!--style="@style/Inventory_LabelDetail"-->
-            <!--android:text="Reconcile?" />-->
-
-            <!--<CheckBox-->
-            <!--android:id="@+id/invCountBook_reconcile"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:paddingLeft="10dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:ellipsize="end"-->
-            <!--android:clickable="false"-->
-            <!--android:theme="@style/MyCheckbox"-->
-
-            <!--/>-->
-            <!--</LinearLayout>-->
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp">
 
 
             <LinearLayout
@@ -71,7 +47,7 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Bin:" />
+                    android:text="@string/label_bin" />
 
                 <TextView
                     android:id="@+id/invCountBook_bin"
@@ -86,7 +62,7 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Batch:" />
+                    android:text="@string/label_batch" />
 
                 <TextView
                     android:id="@+id/invCountBook_batch"
@@ -101,7 +77,7 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Part number:" />
+                    android:text="@string/label_partnumber" />
 
                 <TextView
                     android:id="@+id/invCountBook_partnr"
@@ -117,7 +93,7 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Rotable:" />
+                    android:text="@string/label_rotable" />
 
                 <TextView
                     android:id="@+id/invCountBook_rotable"
@@ -133,7 +109,7 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Serial number:" />
+                    android:text="@string/label_serialnumber" />
 
                 <TextView
                     android:id="@+id/invCountBook_serialnr"
@@ -142,19 +118,35 @@
             </LinearLayout>
 
 
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginTop="5dp">-->
+
+                <!--<TextView-->
+                    <!--style="@style/Inventory_LabelDetail"-->
+                    <!--android:text="@string/label_equipment" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/invCountBook_equipment"-->
+                    <!--style="@style/Inventory_TextDetail" />-->
+            <!--</LinearLayout>-->
+
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
 
-                <TextView
-                    style="@style/Inventory_LabelDetail"
-                    android:text="Equipment:" />
+            <TextView
+            style="@style/Inventory_LabelDetail"
+            android:text="@string/label_assetnum" />
 
-                <TextView
-                    android:id="@+id/invCountBook_equipment"
-                    style="@style/Inventory_TextDetail" />
+            <TextView
+            android:id="@+id/invCountBook_assetnum"
+            style="@style/Inventory_TextDetail" />
             </LinearLayout>
 
             <LinearLayout
@@ -165,24 +157,13 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Current balance:" />
+                    android:text="@string/label_currentbalance" />
 
                 <TextView
                     android:id="@+id/invCountBook_curbal"
                     style="@style/Inventory_TextDetail" />
             </LinearLayout>
 
-
-
-            <!--<ImageButton-->
-            <!--android:id="@+id/actInventoryCount_updateBtn"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentEnd="true"-->
-
-            <!--android:layout_gravity="center"-->
-            <!--android:backgroundTint="@android:color/transparent"-->
-            <!--android:src="@drawable/ic_check_black_24dp" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -194,7 +175,7 @@
                 <TextView
                     android:id="@+id/countDate_label"
                     style="@style/Inventory_LabelDetail"
-                    android:text="Count date:" />
+                    android:text="@string/label_countdate" />
 
                 <TextView
                     android:id="@+id/invCountBook_countdate"
@@ -211,12 +192,11 @@
                 <TextView
                     android:id="@+id/countedBy_label"
                     style="@style/Inventory_LabelDetail"
-                    android:text="Counted by:" />
+                    android:text="@string/label_countedby" />
 
                 <TextView
                     android:id="@+id/invCountBook_countedBy"
-                    style="@style/Inventory_TextDetail"
-                    />
+                    style="@style/Inventory_TextDetail" />
             </LinearLayout>
 
             <LinearLayout
@@ -227,17 +207,9 @@
 
                 <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="Physical count:"
+                    android:text="@string/label_physicalcount"
                     android:paddingTop="10dp"/>
 
-                <!--<EditText-->
-                    <!--android:id="@+id/invCountBook_physicalcount"-->
-                    <!--style="@style/TextDetail"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_weight="1.0"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:inputType="number"-->
-                    <!--/>-->
 
                 <TextView
                     android:id="@+id/invCountBook_physicalcount_view"
@@ -255,23 +227,14 @@
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:textStyle="bold"
                     android:textSize="16sp"
-                    android:inputType="numberDecimal"
-                    />
+                    android:inputType="numberDecimal" />
 
                 <ImageButton
                     android:id="@+id/invCountBook_modifyIcon"
                     android:layout_width="80dp"
                     android:layout_height="45dp"
-                    android:layout_alignParentEnd="true"
                     android:backgroundTint="@android:color/transparent"
                     android:src="@android:drawable/ic_menu_edit" />
-
-                <!--<TextView-->
-                    <!--android:id="@+id/invCountBook_physicalcount_text"-->
-                    <!--android:layout_width="100dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:textSize="16sp"/>-->
 
 
             </LinearLayout>
@@ -295,13 +258,11 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_shape"
-            android:text="SAVE"
+            android:text="@string/text_SAVE"
             android:textColor="@color/colorAccent"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-
-            />
+            android:layout_marginLeft="10dp" />
 
         <Button
             android:id="@+id/dialogInvCountBook_cancelBtn"
@@ -312,13 +273,11 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_shape"
-            android:text="CANCEL"
+            android:text="@string/text_CANCEL"
             android:textColor="@color/colorPrimary"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-
-            />
+            android:layout_marginLeft="10dp" />
     </LinearLayout>
 
 

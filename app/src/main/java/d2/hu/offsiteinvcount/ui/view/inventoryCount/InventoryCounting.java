@@ -14,10 +14,6 @@ public interface InventoryCounting {
 
         void hideLoading();
 
-       // void loadCountBookList(List<InventoryCount> inventoryList);
-
-        //void loadCountBookLineList(InventoryHolder holder);
-
         void loadCountBookLineList(InventoryCount invCount);
     }
 

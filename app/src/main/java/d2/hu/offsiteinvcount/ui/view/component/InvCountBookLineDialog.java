@@ -45,8 +45,10 @@ public class InvCountBookLineDialog extends DialogFragment {
     TextView countBook_rotable;
     @BindView(R.id.invCountBook_serialnr)
     TextView countBook_serialnr;
-    @BindView(R.id.invCountBook_equipment)
-    TextView countBook_equipment;
+//    @BindView(R.id.invCountBook_equipment)
+//    TextView countBook_equipment;
+    @BindView(R.id.invCountBook_assetnum)
+    TextView countBook_assetnum;
     @BindView(R.id.invCountBook_curbal)
     TextView countBook_currentBalance;
     @BindView(R.id.invCountBook_physicalcount)
@@ -84,9 +86,7 @@ public class InvCountBookLineDialog extends DialogFragment {
         item_position=item_position+1;
         presenter = new InventoryCountPresenter();
 
-//        System.out.println("LINE="+item_position+"; partnr="+countBookLineItem.getPartnumber()+"; equipment="+countBookLineItem.getEquipment()
-//        +"; countby="+countBookLineItem.getCountedBy()+"; countdate="+countBookLineItem.getCountedDate()+"; count="+countBookLineItem.getPhysicalCount());
-    }
+  }
 
 
 
@@ -94,14 +94,12 @@ public class InvCountBookLineDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         final View contentView = inflater.inflate(R.layout.dialog_invcountbook, container, false);
-
         ButterKnife.bind(this, contentView);
+
         String physicalCount = countBookLineItem.getPhysicalCount();
         Log.d("------------------>","Physical Count = "+physicalCount+"; is reconciled? = "+countBookLineItem.isReconcile());
 
         if (countBookLineItem.isReconcile()) {
-//            System.out.println(" ISRECONCILE = TRUE ");
-
             countBook_physicalCount.setVisibility(View.INVISIBLE);
             countBook_physicalCount_view.setVisibility(View.VISIBLE);
             modifyCount_icon.setVisibility(View.INVISIBLE);
@@ -112,30 +110,20 @@ public class InvCountBookLineDialog extends DialogFragment {
             countBook_countedBy.setText(countBookLineItem.getCountedBy());
             countBook_countDate.setText(EnvironmentTool.convertDateTimeString(countBookLineItem.getCountedDate()));
         }else{
-//            System.out.println(" ISRECONCILE = FALSE ");
-
             if (!TextUtils.isEmpty(countBookLineItem.getCountedBy())){
-                System.out.println(" line.getCountby = "+countBookLineItem.getCountedBy()+" is NOT Empty");
                 countBook_countedBy.setText(countBookLineItem.getCountedBy());
-            }else{
-                System.out.println(" line.getCountby = "+countBookLineItem.getCountedBy()+" isEmpty");
             }
 
             if (!TextUtils.isEmpty(countBookLineItem.getCountedDate())){
-                System.out.println(" line.getCountedDate = "+countBookLineItem.getCountedDate()+" is NOT Empty");
                 countBook_countDate.setText(EnvironmentTool.convertDateTimeString(countBookLineItem.getCountedDate()));
-            }else{
-                System.out.println(" line.getCountedDate = "+countBookLineItem.getCountedDate()+" isEmpty");
             }
 
 
             if (physicalCount.isEmpty()){
-//                System.out.println(" ---> PHYSICAL count is EMPTY >> physicalcount="+physicalCount );
                 countBook_physicalCount_view.setVisibility(View.INVISIBLE);
                 modifyCount_icon.setVisibility(View.INVISIBLE);
                 countBook_physicalCount.setVisibility(View.VISIBLE);
             }else{
-//                System.out.println(" ---> PHYSICAL count is NOT EMPTY >> physicalcount="+physicalCount );
                 countBook_physicalCount_view.setVisibility(View.VISIBLE);
                 countBook_physicalCount_view.setText(physicalCount);
                 countBook_physicalCount.setVisibility(View.INVISIBLE);
@@ -151,76 +139,28 @@ public class InvCountBookLineDialog extends DialogFragment {
             dialog_saveBtn.setVisibility(View.VISIBLE);
         });
 
-        dialog_title.setText("Count book item details: ");
+        dialog_title.setText(getResources().getString(R.string.title_countbookdetails));
 
         countBook_bin.setText(countBookLineItem.getBin());
         countBook_batch.setText(countBookLineItem.getBatch());
         countBook_partnr.setText(countBookLineItem.getPartnumber());
         countBook_rotable.setText(String.valueOf(countBookLineItem.isRotable()));
         countBook_serialnr.setText(countBookLineItem.getSerialnumber());
-        countBook_equipment.setText(countBookLineItem.getEquipment());
+        countBook_assetnum.setText(countBookLineItem.getEquipment());
+       // countBook_equipment.setText(countBookLineItem.getEquipment());
         countBook_currentBalance.setText(countBookLineItem.getCurrentBalance());
 
-
-//        String physicalCount = countBookLineItem.getPhysicalCount();
-//
-//        if (countBookLineItem.isReconcile()) {
-//            countBook_physicalCount.setVisibility(View.INVISIBLE);
-//            countBook_physicalCount_view.setVisibility(View.VISIBLE);
-//            countBook_physicalCount_view.setText(physicalCount);
-//
-//            System.out.println(" ISRECONCILE = TRUE : line.getphysical count = "+countBookLineItem.getPhysicalCount()+" --> variable = "+physicalCount);
-//            dialog_saveBtn.setVisibility(View.INVISIBLE);
-//            countBook_countedBy.setText(countBookLineItem.getCountedBy());
-//            countBook_countDate.setText(EnvironmentTool.convertDateTimeString(countBookLineItem.getCountedDate()));
-//
-//        }else{
-//
-//            countBook_physicalCount.setVisibility(View.VISIBLE);
-//            countBook_physicalCount_view.setVisibility(View.INVISIBLE);
-//            countBook_physicalCount.setText(physicalCount);
-//
-//
-//            System.out.println(" ISRECONCILE = FALSE >> physicalCount="+physicalCount);
-//            if (TextUtils.isEmpty(countBookLineItem.getCountedBy())){
-//                System.out.println(" line.getCountby = "+countBookLineItem.getCountedBy()+" isEmpty");
-//            }else{
-//                System.out.println(" line.getCountby = "+countBookLineItem.getCountedBy()+" is NOT Empty");
-//                countBook_countedBy.setText(countBookLineItem.getCountedBy());
-//            }
-//
-//            if (TextUtils.isEmpty(countBookLineItem.getCountedDate())){
-//                System.out.println(" line.getCountedDate = "+countBookLineItem.getCountedDate()+" isEmpty");
-//            }else{
-//                System.out.println(" line.getCountedDate = "+countBookLineItem.getCountedDate()+" is NOT Empty");
-//                countBook_countDate.setText(EnvironmentTool.convertDateTimeString(countBookLineItem.getCountedDate()));
-//            }
-//
-//            System.out.println(" line.physical count = "+physicalCount);
-//        }
-//
-//
-//        dialog_title.setText("Count book item details: ");
-//
-//        countBook_bin.setText(countBookLineItem.getBin());
-//        countBook_batch.setText(countBookLineItem.getBatch());
-//        countBook_partnr.setText(countBookLineItem.getPartnumber());
-//        countBook_rotable.setText(String.valueOf(countBookLineItem.isRotable()));
-//        countBook_serialnr.setText(countBookLineItem.getSerialnumber());
-//        countBook_equipment.setText(countBookLineItem.getEquipment());
-//        countBook_currentBalance.setText(countBookLineItem.getCurrentBalance());
-//        countBook_physicalCount.setText(physicalCount);
 
 
         dialog_saveBtn.setOnClickListener(v -> {
 
-            System.out.println(" ----> SAVE inventory counting --> "+countBook_physicalCount.getText());
             if (TextUtils.isEmpty(countBook_physicalCount.getText())){
-                countBook_physicalCount.setError("Physical count field is required!");
+                countBook_physicalCount.setError(getResources().getString(R.string.error_phycountfield));
                 countBook_physicalCount.requestFocus();
             }else{
                 String count = countBook_physicalCount.getText().toString();
                 double count_in_double  = Double.parseDouble(count);
+
                 if (count_in_double > Double.parseDouble(countBookLineItem.getCurrentBalance())){
                     countBook_physicalCount.setError("Physical count field is must be <= than current balance!");
                     countBook_physicalCount.requestFocus();
@@ -231,16 +171,14 @@ public class InvCountBookLineDialog extends DialogFragment {
                     presenter.updateInvCountBookLine(count,countBookItem.getCountBookID(), item_position, countBookLineItem, new RemoteCallBack<Boolean>() {
                         @Override
                         public void onSucces(Boolean object) {
-
-                            System.out.println(" >>>>>> UPDATE line - SUCCESS = "+object+" -- on line "+item_position);
                             if (object){
                                 dismiss();
-                                Log.d("-------------->","Successful inventory!");
-                                Toast.makeText(getActivity(),"Successful inventory",Toast.LENGTH_SHORT).show();
+                                Log.d("-------------->",getResources().getString(R.string.succes_msg));
+                                Toast.makeText(getActivity(),getResources().getString(R.string.succes_msg),Toast.LENGTH_SHORT).show();
                                 ((InventoryCountBookLinesActivity)getActivity()).reloadLines(countBookItem.getCountbook());
                             }else{
-                                Log.e("------------->","Inventory Counting failed!");
-                                Toast.makeText(getActivity(),"Inventory Counting failed!",Toast.LENGTH_SHORT).show();
+                                Log.e("------------->",getResources().getString(R.string.error_invcount_failed));
+                                Toast.makeText(getActivity(),getResources().getString(R.string.error_invcount_failed),Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

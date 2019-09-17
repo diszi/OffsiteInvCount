@@ -23,6 +23,7 @@ import d2.hu.offsiteinvcount.ui.view.MainActivity;
 import d2.hu.offsiteinvcount.ui.view.base.BaseActivity;
 import d2.hu.offsiteinvcount.ui.view.base.BaseViewPresenter;
 import d2.hu.offsiteinvcount.ui.view.component.SelectIPDialog;
+import d2.hu.offsiteinvcount.util.EnvironmentTool;
 
 public class LoginActivity extends BaseActivity implements Login.View{
 
@@ -32,8 +33,6 @@ public class LoginActivity extends BaseActivity implements Login.View{
 
     @BindView(R.id.actLogin_Name)
     EditText compLoginName;
-    //AutoCompleteTextView compLoginName;
-
     @BindView(R.id.actLogin_Password)
     EditText compLoginPassword;
     @BindView(R.id.actLogin_Button)
@@ -42,7 +41,6 @@ public class LoginActivity extends BaseActivity implements Login.View{
     ProgressBar compProgressBar;
     @BindView(R.id.version)
     TextView compVersion;
-
     @BindView(R.id.actSelectIP_button)
     Button compSelectIP;
 
@@ -53,15 +51,13 @@ public class LoginActivity extends BaseActivity implements Login.View{
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        Log.d("---------->","Start LoginActivity");
+        Log.d("------------------>","Start LoginActivity");
 
         setUpFocus();
         this.mContext = getApplicationContext();
         ipDialog = new SelectIPDialog();
         presenter = new LoginPresenter(this);
-
-       // compVersion.setText(EnvironmentTool.getVersionApp());
-        HolderSingleton.getInstance().setServerIPaddress("172.31.147.51");
+        compVersion.setText(EnvironmentTool.getVersionApp());
     }
 
 
@@ -71,7 +67,6 @@ public class LoginActivity extends BaseActivity implements Login.View{
 
     @Override
     public void onBackPressed(){
-        System.out.println("Back Pressed");
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -80,26 +75,10 @@ public class LoginActivity extends BaseActivity implements Login.View{
         super.onBackPressed();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.onDestroy();
-
-        finishAndRemoveTask();
-    }
 
 
     @OnClick(R.id.actLogin_Button)
     public void onClick(){
-
-
-        // System.out.println(" ---> onClick on LOGIN button");
 
         compLoginButton.setEnabled(false);
         compLoginName.setError(null);
@@ -112,35 +91,30 @@ public class LoginActivity extends BaseActivity implements Login.View{
         View focusView = null;
 
 
-
-
-
         if (TextUtils.isEmpty(password)){
             cancel = true;
-            compLoginPassword.setError("Required");
+            compLoginPassword.setError(getResources().getString(R.string.error_isRequired));
             focusView = compLoginPassword;
         }
 
         if (TextUtils.isEmpty(loginName)){
             cancel = true;
-            compLoginName.setError("Required");
+            compLoginName.setError(getResources().getString(R.string.error_isRequired));
             focusView = compLoginName;
         }
-
 
 
         if (cancel) {
             focusView.requestFocus();
         } else {
-
             if (HolderSingleton.getInstance().getServerIPaddress()!=null){
                 presenter.login(loginName, password,HolderSingleton.getInstance().getServerIPaddress());
 
             }else{
-                Toast.makeText(this,"Please select IP address!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getResources().getString(R.string.text_selectIP),Toast.LENGTH_SHORT).show();
+                Log.d("------------------>",getResources().getString(R.string.text_selectIP));
             }
         }
-
 
         compLoginButton.setEnabled(true);
     }
@@ -152,50 +126,36 @@ public class LoginActivity extends BaseActivity implements Login.View{
     }
 
     public void setIPAddress(String ip){
-        System.out.println(" ----> "+ip);
-        //if (ip!=null){
         compSelectIP.setText(ip);
-        //}
     }
 
     @Override
     public void showLoading() {
-
-        //Log.d("----------> ","Login : showLoading");
         compProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-
-        // Log.d("----------> ","Login : hideLoading");
         compProgressBar.setVisibility(View.GONE);
     }
 
     @Override
-    public void showErrorMessage(int messageID) {
-
+    public void showErrorMessage(String msg) {
+        Log.e("------------------>",msg);
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void launchMainView() {
-
-        Log.d("---------->","Login : launchFunctionView");
+        Log.d("------------------>","Login : launchFunctionView");
+        hideLoading();
         initApplication();
-
-
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-
-
     }
 
-    @Override
-    protected BaseViewPresenter getBasePresenter() {
 
-        return presenter;
-    }
 
     @Override
     public void setUserToContext(String username) {
@@ -203,10 +163,29 @@ public class LoginActivity extends BaseActivity implements Login.View{
     }
 
 
-    //  App initialization
     private void initApplication(){
         HolderSingleton.getInstance().setContext(this);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+        finishAndRemoveTask();
+    }
+
+    @Override
+    protected BaseViewPresenter getBasePresenter() {
+        return presenter;
+    }
+
 
 
 

@@ -17,13 +17,8 @@ import d2.hu.offsiteinvcount.ui.view.inventoryCount.InventoryCountListActivity;
 public class MainActivity extends AppCompatActivity {
 
 
-
-
     @BindView(R.id.package_inventoryCount)
     CardView inventoryCountCard;
-//    @BindView(R.id.package_inventory)
-//    CardView inventoryCard;
-
 
 
     @Override
@@ -31,18 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Log.i("-------->","START MainActivity - user : "+ SettingsSingleton.getInstance().getUserName());
-
-
-        String loggidUserName = getLoggedInUser();
-
-
+        Log.i("------------------>","START MainActivity ");
 
     }
 
 
     public void inventoryCount(View view) {
-        //System.out.println(" ---> onClick : putawayInWIP -> "+view.getContext() );
         Intent intent = new Intent(this, InventoryCountListActivity.class);
         startActivity(intent);
     }
@@ -57,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String getLoggedInUser()
-    {
+    public String getLoggedInUser() {
         return SettingsSingleton.getInstance().getUserName();
     }
 
@@ -66,17 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onPause() {
         super.onPause();
-        // System.out.println("----> MainActivity.onPause()");
     }
 
     protected void onResume() {
         super.onResume();
-        // System.out.println("----> MainActivity.onResume()");
     }
 
     protected void onDestroy() {
         super.onDestroy();
-        //System.out.println("----> MainActivity.onDestroy()");
     }
 
 

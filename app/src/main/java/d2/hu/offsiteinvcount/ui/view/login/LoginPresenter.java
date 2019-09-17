@@ -34,22 +34,19 @@ public class LoginPresenter extends BasePresenter implements Login.Presenter{
 
     @Override
     public void login(String userName, String password, String ipAddress) {
-        Log.d("---------->","Login presenter");
+        Log.d("------------------>","Login presenter");
         loginView.showLoading();
 
         disposable = createObservable(userName, password,ipAddress).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).doOnNext((param) -> {
-
                 }).subscribe((object) -> { // onNext Consumer
-
 
                 }, (throwable) -> { // onError Consumer
                     UIThrowable uiThrowable = (UIThrowable) throwable;
-                    loginView.showErrorMessage(uiThrowable.getMessageId());
+                    loginView.showErrorMessage(uiThrowable.getMessage());
                     loginView.hideLoading();
                 }, () -> { // onComplate Action
                     loginView.setUserToContext(userName);
-
                     loginView.launchMainView();
                 });
     }
@@ -65,25 +62,22 @@ public class LoginPresenter extends BasePresenter implements Login.Presenter{
                     CustomerProperties.setURLs(ipaddress);
                     connection = NetworkTool.createConnection(CustomerProperties.LOGIN_URL);
 
-
                     String credentials = userName + ":" + password;
                     String base64Credentials = Base64.encodeToString(credentials.getBytes(), Base64.DEFAULT);
-                    System.out.println("username="+userName+" password="+password+" ---> base64Credentials : "+base64Credentials);//bWF4YWRtaW46SGUxMW9vNzAu
                     connection.setRequestProperty("MAXAUTH", base64Credentials); //bWF4YWRtaW46SGUxMW9vNzAu
-
-
                     connection.connect();
 
                     int responseCode = connection.getResponseCode();
-                    Log.i("---------->","Connection response="+responseCode);
-                    //System.out.println(" Connection response = "+responseCode);
+                    Log.i("------------------>","Connection response="+responseCode);
 
                     if (responseCode == 200) {
                         emitter.onComplete();
                     } else if (responseCode == 400) {
                         emitter.onError(new UIThrowable(R.string.error_wrongUser));
+                        Log.e("------------------>","Wrong User");
                     } else {
                         emitter.onError(new UIThrowable(R.string.error_authFailed));
+                        Log.e("------------------>","Authentication Failed");
                     }
 
                 } finally {
@@ -92,12 +86,13 @@ public class LoginPresenter extends BasePresenter implements Login.Presenter{
                     }
                 }
             } catch (Exception ex) {
-                //System.out.println(" ---> EX = "+ex.getMessage());//Network is unreachable
                 Log.e("", "---------->", ex);
                 if (ex.getMessage().equals("Network is unreachable")){
                     emitter.onError(new UIThrowable(R.string.error_network));
+                    Log.e("------------------>","Network Erro");
                 }else{
                     emitter.onError(new UIThrowable(R.string.error_unknown));
+                    Log.e("------------------>","Unknown Error");
                 }
 
 

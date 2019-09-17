@@ -13,9 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -49,53 +47,35 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
 
 
     private InventoryCount invCountBook ;
-
     private InventoryCountBookLinesAdapter adapter;
     private InventoryCountPresenter presenter;
     private InvCountBookLineDialog detailsDialog;
     private InvCountBookLineChooseDialog chooseDialog;
-
-
-    private List<InventoryCount.CountBookLine> lineList = new ArrayList<>();
     private Map<Integer,InventoryCount.CountBookLine> lineMap = new HashMap<>();
 
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
-
         super.onCreate(saveInstanceState);
-        Log.i("------------------>", "Start Activity - InventoryCountBookLinesActivity");
-
-
-
         setContentView(R.layout.activity_inv_count_book_list);
         ButterKnife.bind(this);
+        Log.i("------------------>", "Start Activity - InventoryCountBookLinesActivity");
 
-
-//        InventoryHolder holder =  (InventoryHolder)getIntent().getExtras().getSerializable(InventoryHolder.SERIALIZABLE_NAME);
-//        InventoryCount countBook = holder.getEntity_countBook();
         InventoryCount countBook = (InventoryCount)getIntent().getExtras().getSerializable(InventoryCount.SERIALIZABLE_NAME);
-
         String countBook_number = countBook.getCountbook();
-
+        this.setupRecyclerView();
 
         Log.d("------------------>","Selected item : [nr="+countBook_number+"; ID="+countBook.getCountBookID()+"; status="+countBook.getStatus()+
                 "; storeroom="+countBook.getStoreroom()+"]");
-        //System.out.println("\t[countBooknr="+countBook.getCountbook()+"; line size = "+countBook.getCountBookLineList().size()+"]");
 
-
-        this.setupRecyclerView();
 
         storeroom.setText(countBook.getStoreroom());
         status.setText(countBook.getStatus());
         countbook_nr.setText(countBook.getCountbook());
 
-
         presenter = new InventoryCountPresenter();
-
         detailsDialog = new InvCountBookLineDialog();
         chooseDialog = new InvCountBookLineChooseDialog();
-
 
         getCountBookLinesList(countBook_number);
 
@@ -105,7 +85,6 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
     private void setupRecyclerView() {
         Context context = getApplicationContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-
         this.adapter = new InventoryCountBookLinesAdapter(this);
         this.compRecyclerView.setLayoutManager(layoutManager);
         this.compRecyclerView.setAdapter(this.adapter);
@@ -117,8 +96,6 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
                     @Override
                     public void onSucces(InventoryCount object) {
                         invCountBook = object;
-                        System.out.println("COUNTBOOK lines size = "+invCountBook.getCountBookLineList().size());
-
                         adapter.setCountBookLines(invCountBook);
                         hideLoading();
                     }
@@ -132,10 +109,8 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
     }
 
     public void loadCountBookLineDetailsDialog(InventoryCount.CountBookLine countBookLine,int position){
-        Log.d("------------------>","loadCountBookLineDetailsDialog : [line item = <"+countBookLine.getPartnumber()+", "+countBookLine.getEquipment()+"> ; countbookNR="+
-        invCountBook.getCountbook()+"; position="+position+"]");
-//        System.out.println(" ---> loadCountBookLineDetailsDialog = lineITEM ["+countBookLine.getPartnumber()+" - "+countBookLine.getEquipment()+"]; position = "
-//                +position+"; countBook number = "+invCountBook.getCountbook()+"; countDate = "+countBookLine.getCountedDate()+"; countby="+countBookLine.getCountedBy()+"]");
+        Log.d("------------------>","loadCountBookLineDetailsDialog : [line item = <"+countBookLine.getPartnumber()+", "
+                +countBookLine.getEquipment()+"> ; countbookNR="+ invCountBook.getCountbook()+"; position="+position+"]");
 
         FragmentManager fm = this.getFragmentManager();
         Bundle bundle = new Bundle();
@@ -161,28 +136,23 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
 
     @Override
     public void onDataScanned(String scanData) {
-        Log.d("------------->","onDataScanned() : "+scanData.toString());
+        Log.d("------------------>","onDataScanned() : "+scanData);
 
         String valid_partnum_format=null;
-        valid_partnum_format = EnvironmentTool.scannedDataVerification_partnumber(scanData.toString());
+        valid_partnum_format = EnvironmentTool.scannedDataVerification_partnumber(scanData);
         if (valid_partnum_format!=null){
-//            partnumField.setText(valid_partnum_format);
-//            loadPickingItemDetails(valid_partnum_format);
+
 
             Map<Integer,InventoryCount.CountBookLine> countLineMap = getLineMap(valid_partnum_format);
 
-            System.out.println(" MAP SIZE = "+countLineMap.size());
             if (countLineMap.size() == 0){
                 //  onError();
-                //System.out.println(" ---> This part number not exist in Count Book");
                 Toast.makeText(this,"Part number "+valid_partnum_format+" not exist in Count Book", Toast.LENGTH_SHORT).show();
             }
             if (countLineMap.size() == 1 ){
-                //System.out.println(" == countLineMap.get(0) = "+countLineMap.get(0));
                 Map.Entry<Integer,InventoryCount.CountBookLine> entry = countLineMap.entrySet().iterator().next();
                 Integer key= entry.getKey();
                 InventoryCount.CountBookLine value=entry.getValue();
-                System.out.println(" ----> key="+key+"; value="+value);
 
                 loadCountBookLineDetailsDialog(value,key);
             }
@@ -195,26 +165,19 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
             Toast.makeText(this,"Invalid barcode/QRcode format", Toast.LENGTH_SHORT).show();
         }
 
-        System.out.println(" ------> valid part num format = "+valid_partnum_format);
-
-
 
 
     }
 
-//    private List<InventoryCount.CountBookLine> getLineList(String partnumber){
     private Map<Integer,InventoryCount.CountBookLine> getLineMap(String partnumber){
 
-        //clearLineList();
+
         clearLineMap();
 
         for(int i=0;i<invCountBook.getCountBookLineList().size();i++){
-          //  System.out.println(" ---> line items : "+invCountBook.getCountBookLineList().get(i).getPartnumber());
             System.out.println(" getLineMap ["+invCountBook.getCountBookLineList().get(i).getPartnumber() +" == ? "+partnumber);
 
             if (invCountBook.getCountBookLineList().get(i).getPartnumber().equals(partnumber)){
-                //lineList.add(invCountBook.getCountBookLineList().get(i));
-
                 lineMap.put(i,invCountBook.getCountBookLineList().get(i));
 
             }
@@ -227,9 +190,8 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
 
 
 
-//   private void loadCountBookLineChooseDialog(List<InventoryCount.CountBookLine> list){
+
     public void loadCountBookLineChooseDialog(Map<Integer,InventoryCount.CountBookLine> lineMap){
-        System.out.println(" ---> loadCountBookLineChooseDialog = lineMap size ="+lineMap.size());
        FragmentManager fm = this.getFragmentManager();
        Bundle bundle = new Bundle();
        bundle.putSerializable(InventoryCount.CountBookLine.SERIALIZABLE_NAME,(HashMap<Integer,InventoryCount.CountBookLine>)lineMap);
@@ -237,9 +199,7 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
        chooseDialog.show(fm,"ShowHistoryDetails");
    }
 
-//    private void clearLineList(){
-//        lineList.clear();
-//    }
+
 
     private void clearLineMap(){
         lineMap.clear();
@@ -254,8 +214,8 @@ public class InventoryCountBookLinesActivity extends BaseScannerActivity {
 
     @Override
     public void onError() {
-       // System.out.println("ERROR in scanning...");
-        Toast.makeText(this,"Error in scanning...", Toast.LENGTH_SHORT).show();
+        Log.e("------------------>",getResources().getString(R.string.error_inscanning));
+        Toast.makeText(this,getResources().getString(R.string.error_inscanning), Toast.LENGTH_SHORT).show();
     }
 
     public void showLoading() {

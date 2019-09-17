@@ -27,15 +27,13 @@ public class InventoryCountListAdapter extends RecyclerView.Adapter<InventoryCou
 
 
     public void setInventoryCountList(List<InventoryCount> inventoryCountList){
-        Log.d("----------->","Adapter - Inventory Count list");
         this.inventoryCountList.clear();
         this.inventoryCountList.addAll(inventoryCountList);
         this.notifyDataSetChanged();
-//        view.compEmpty.setVisibility(activeInboundList.isEmpty()?View.VISIBLE:View.GONE);
     }
 
     public void setInventoryCountListRefresh(List<InventoryCount> invCountList){
-        Log.d("----------->","Adapter - Inventory Count list REFRESH");
+        Log.d("------------------>","Inventory Count list REFRESH");
         this.inventoryCountList = invCountList;
         this.notifyDataSetChanged();
     }
@@ -53,10 +51,7 @@ public class InventoryCountListAdapter extends RecyclerView.Adapter<InventoryCou
         holder.bind(countBook);
 
         holder.itemView.setOnClickListener((v) ->{
-          //  Log.i("------------->","onClick on CountBook Item - pos:"+position);
-//            view.loadCountBookLineList(new InventoryHolder(countBook,position));
             view.loadCountBookLineList(countBook);
-
         });
 
     }
@@ -78,11 +73,10 @@ public class InventoryCountListAdapter extends RecyclerView.Adapter<InventoryCou
         TextView invCount_status;
         @BindView(R.id.textView4)
         TextView invCount_storeroom;
-//        @BindView(R.id.actInventoryCount_modifyBtn)
-//        ImageButton modifyBtn;
 
 
-        public InventoryCountViewHolder(View itemView) {
+
+        InventoryCountViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }

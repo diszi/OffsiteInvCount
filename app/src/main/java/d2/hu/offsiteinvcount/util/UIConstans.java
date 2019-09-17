@@ -9,4 +9,5 @@ public class UIConstans {
     public static String DATE_PATTERN_HU = "yyyy.MM.dd. HH:mm";
     public static String DATE_PATTERN_INBOUND = "dd/MMM/yyyy";
 
+
 }

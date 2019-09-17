@@ -22,7 +22,7 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
     private List<InventoryCount> inventoryCountList= null;
     private InventoryCount inventoryCountBook_item = null;
     private boolean update_success=false;
-
+    private StringBuffer tempURL = new StringBuffer();
 
     InventoryCountPresenter(InventoryCounting.View view){
         this.view = view;
@@ -30,10 +30,7 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
 
     public InventoryCountPresenter(){}
 
-    @Override
-    public void onDestroy() {
 
-    }
 
 
     @SuppressLint("StaticFieldLeak")
@@ -42,7 +39,6 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
         Log.d("-----------------> ","REST GET : Inventory count list");
         view.showLoading();
 
-        Log.d("----------->","InventoryCountPresenter.getInventoryCountList() -> URL = "+CustomerProperties.GET_INVENTORY_COUNT);
         HttpCall httpCall = new HttpCall();
         httpCall.setMethod(HttpCall.RequestMethod.GET);
         httpCall.setUrl(CustomerProperties.GET_INVENTORY_COUNT);
@@ -51,13 +47,10 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
             public void onResponse(String response) {
                 super.onResponse(response);
                 if (response != null){
-
                     inventoryCountList = EntityMapper.transformInventoryCountList(response);
                     remoteCallBack.onSucces(inventoryCountList);
-                    //view.loadCountBookList(inventoryCountList);
-
                 }else{
-                    Log.e("-----------> ","load Inventory Count List - Error");
+                    Log.e("------------------>" ,"load Inventory Count List - Error");
                 }
             }
         }.execute(httpCall);
@@ -68,6 +61,7 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
     public void getInvCountBookLinesList(String countBookNumber, InventoryCountBookLinesActivity activity, RemoteCallBack<InventoryCount> remoteCallBack){
         Log.d("-----------------> ","REST GET : Inventory count book line list");
         activity.showLoading();
+
         HttpCall httpCall = new HttpCall();
         httpCall.setMethod(HttpCall.RequestMethod.GET);
         httpCall.setUrl(CustomerProperties.GET_INVENTORY_COUNT+"&COUNTBOOKNUM="+countBookNumber);
@@ -75,32 +69,28 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
             @Override
             public void onResponse(String response) {
                 super.onResponse(response);
-                //System.out.println(" GET response : "+response);
                 if (response != null){
-
                     inventoryCountBook_item = EntityMapper.transformInventoryCountBookItem(response);
-
                     if (inventoryCountBook_item!=null){
                         remoteCallBack.onSucces(inventoryCountBook_item);
                     }else {
                         System.out.println(" >>> NINCS LINE a count-book-hoz");
                     }
-
                 }else{
-                    Log.e("-----------> ","load History - Error");
+                    Log.e("------------------>" ,"load History - Error");
                 }
             }
         }.execute(httpCall);
     }
 
+
     @SuppressLint("StaticFieldLeak")
     @Override
     public void updateInvCountBookLine(String phyCount, String countBookID, int line_number, InventoryCount.CountBookLine countBookItem, RemoteCallBack<Boolean> remoteCallBack) {
-        Log.d("-----------------> ","REST PUT : Inventory count book line UPDATE => physicalCount="+phyCount+"; currentBalance="+countBookItem.getCurrentBalance());
-        StringBuffer tempURL = new StringBuffer();
+        Log.d("------------------>" ,"REST PUT : Inventory count book line UPDATE");
 
-       // tempURL.append("&PHYSCNTDATE="+new Date());
-//        String actualDate = EnvironmentTool.convertDate(new Date(), UIConstans.DATE_PATTERN_STANDARD);
+        tempURL.delete(0,tempURL.length());
+
 
         if (!countBookItem.getEquipment().equals("")){
             //rotable
@@ -118,9 +108,9 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
 
 
         if (Double.parseDouble(phyCount) == Double.parseDouble(countBookItem.getCurrentBalance())){
-            tempURL.append("&MATCH=1");
+            tempURL.append("&PLUSTCBLINES."+line_number+".MATCH=1");
         }else{
-            tempURL.append("&MATCH=0");
+            tempURL.append("&PLUSTCBLINES."+line_number+".MATCH=0");
         }
 
         HttpCall httpCall = new HttpCall();
@@ -130,17 +120,23 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
             @Override
             public void onResponse(String response) {
                 super.onResponse(response);
-                System.out.println(" RESPONSE = "+response);
+
                 if (response != null){
                     update_success = true;
                 }else{
                     update_success = false;
-                    Log.e("-----------> ","update Inventory Count Book line - Error");
+                    Log.e("------------------>" ,"update Inventory Count Book line - Error");
                 }
                 remoteCallBack.onSucces(update_success);
             }
         }.execute(httpCall);
 
+    }
+
+
+    @Override
+    public void onDestroy() {
+        disposeAll();
     }
 
 

@@ -25,12 +25,10 @@ import d2.hu.offsiteinvcount.ui.view.MainActivity;
 import d2.hu.offsiteinvcount.ui.view.base.BaseActivity;
 import d2.hu.offsiteinvcount.ui.view.base.BaseViewPresenter;
 import d2.hu.offsiteinvcount.ui.view.base.RemoteCallBack;
+import d2.hu.offsiteinvcount.util.UIConstans;
 
 
 public class InventoryCountListActivity extends BaseActivity implements InventoryCounting.View {
-
-
-    public static int INVENTORY_COUNT_REQUEST_CODE = 0;
 
 
     @BindView(R.id.actInventoryCountList_recyclerView)
@@ -39,6 +37,9 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
     SwipeRefreshLayout compSwipeRefreshLayout;
     @BindView(R.id.actInventoryCountList_progressBar)
     ProgressBar compProgressBar;
+    @BindView(R.id.actInventoryCountList_toolbar)
+    Toolbar compToolbar;
+
     @BindView(R.id.userName)
     TextView username;
     @BindView(R.id.syncDate)
@@ -46,12 +47,9 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
     @BindView(R.id.emptyText)
     TextView emptyText;
 
-    @BindView(R.id.actInventoryCountList_toolbar)
-    Toolbar compToolbar;
 
     private InventoryCountListAdapter adapter;
     private InventoryCountPresenter presenter;
-    private List<InventoryCount> inventoryCountList;
     private String syncDateString;
 
     @Override
@@ -60,16 +58,12 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
         setContentView(R.layout.activity_inventory_count_list);
         ButterKnife.bind(this);
         Log.i("------------------>", "Start Activity - InventoryCountListActivity");
-
         this.setupRecyclerView();
-
         setSyncDate();
-        actualDate.setText(syncDateString);
         username.setText(SettingsSingleton.getInstance().getUserName());
 
-        compToolbar.setTitle("Count Books");
+        compToolbar.setTitle(getResources().getString(R.string.title_countbooks));
         compToolbar.setTitleTextColor(Color.WHITE);
-
         presenter = new InventoryCountPresenter(this);
 
         getInventoryCountList();
@@ -77,11 +71,7 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
         compSwipeRefreshLayout.setOnRefreshListener(() -> {
             compSwipeRefreshLayout.setRefreshing(false);
             getInventoryCountListRefresh();
-
-
         });
-
-
 
     }
 
@@ -90,6 +80,7 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
             @Override
             public void onSucces(List<InventoryCount> object) {
                 adapter.setInventoryCountList(object);
+
                 hideLoading();
                 emptyText.setVisibility(object.isEmpty()? View.VISIBLE: View.GONE);
             }
@@ -101,6 +92,7 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
             @Override
             public void onSucces(List<InventoryCount> object) {
                 adapter.setInventoryCountListRefresh(object);
+
                 hideLoading();
                 emptyText.setVisibility(object.isEmpty()? View.VISIBLE: View.GONE);
             }
@@ -110,29 +102,15 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
     private void setupRecyclerView() {
         Context context = getApplicationContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-
         this.adapter = new InventoryCountListAdapter(this);
         this.compRecyclerView.setLayoutManager(layoutManager);
         this.compRecyclerView.setAdapter(this.adapter);
     }
 
-//    @Override
-//    public void loadCountBookList(List<InventoryCount> inventoryCountList) {
-//        this.inventoryCountList = inventoryCountList;
-//        adapter.setInventoryCountList(this.inventoryCountList);
-//    }
-
-
-//    public void loadCountBookLineList(InventoryHolder holder) {
-//        Intent intent = new Intent(this,InventoryCountBookLinesActivity.class);
-//        intent.putExtra(InventoryHolder.SERIALIZABLE_NAME,holder);
-//        startActivity(intent);
-//
-//    }
 
     @Override
     public void loadCountBookLineList(InventoryCount invCount) {
-        Log.d("---------------------> ","Launch bookline list activity for countBook "+invCount.getCountbook());
+        Log.d("---------------------> ","Launch booklinelist activity for countBook "+invCount.getCountbook());
         Intent intent = new Intent(this,InventoryCountBookLinesActivity.class);
         intent.putExtra(InventoryCount.SERIALIZABLE_NAME,invCount);
         startActivity(intent);
@@ -160,7 +138,6 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
     public void onBackPressed(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
 
     /**
@@ -172,14 +149,11 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
                 try{
                     while(!isInterrupted()){
                         Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-                                syncDateString = sdf.format(date);
-                                actualDate.setText(syncDateString);
-                            }
+                        runOnUiThread(() -> {
+                            long date = System.currentTimeMillis();
+                            SimpleDateFormat sdf = new SimpleDateFormat(UIConstans.DATE_PATTERN_HU);
+                            syncDateString = sdf.format(date);
+                            actualDate.setText(syncDateString);
                         });
                     }
                 } catch (InterruptedException e) {

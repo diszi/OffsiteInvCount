@@ -15,29 +15,7 @@
         android:paddingBottom="5dp"
         android:background="@color/colorLightGray"
         >
-        <!--android:background="@color/maximoLightBlue"-->
-        <!--android:background="#e0dede"-->
 
-        <!--<TextView-->
-        <!--android:id="@+id/countBook_item_reconcile"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1"-->
-        <!--android:ellipsize="end"-->
-        <!--android:padding="5dp"-->
-
-        <!--android:textAlignment="center"/>-->
-
-
-        <!--<CheckBox-->
-        <!--android:id="@+id/reconcile_checkbox"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:ellipsize="end"-->
-        <!--android:clickable="false"-->
-        <!--android:theme="@style/MyCheckbox"-->
-        <!--/>-->
 
         <TextView
             android:id="@+id/countBook_item_partnr"
@@ -47,7 +25,6 @@
             android:ellipsize="end"
             android:padding="5dp"
             android:textAlignment="center"
-            android:text="partnr"
             android:paddingBottom="10dp"
             />
 
@@ -59,7 +36,6 @@
             android:ellipsize="end"
             android:padding="5dp"
             android:textAlignment="center"
-            android:text="assetnr"
             android:paddingBottom="10dp"
             />
 
@@ -68,7 +44,6 @@
             android:id="@+id/countBook_item_reconcile"
             android:layout_width="35dp"
             android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
             android:backgroundTint="@android:color/transparent"
             android:src="@drawable/ic_check_icon"
             android:paddingBottom="10dp"/>
