@@ -23,6 +23,8 @@ public interface InventoryCounting {
 
         void getInvCountBookLinesList(String countBook, InventoryCountBookLinesActivity activity, RemoteCallBack<InventoryCount> remoteCallBack);
 
+        void getInvCountBookLinesList_2(String countBook, RemoteCallBack<InventoryCount> remoteCallBack);
+
         void updateInvCountBookLine(String phyCount, String countBookID, int line_number, InventoryCount.CountBookLine countBookItem, RemoteCallBack<Boolean> remoteCallBack);
     }
 

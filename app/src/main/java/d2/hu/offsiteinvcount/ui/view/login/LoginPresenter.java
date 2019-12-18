@@ -89,10 +89,10 @@ public class LoginPresenter extends BasePresenter implements Login.Presenter{
                 Log.e("", "---------->", ex);
                 if (ex.getMessage().equals("Network is unreachable")){
                     emitter.onError(new UIThrowable(R.string.error_network));
-                    Log.e("------------------>","Network Erro");
+                    //Log.e("------------------>","Network Error : network is unreachable");
                 }else{
                     emitter.onError(new UIThrowable(R.string.error_unknown));
-                    Log.e("------------------>","Unknown Error");
+                   // Log.e("------------------>","Unknown Error");
                 }
 
 

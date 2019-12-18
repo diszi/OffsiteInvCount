@@ -1,10 +1,17 @@
 package d2.hu.offsiteinvcount.util;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import d2.hu.offsiteinvcount.BuildConfig;
+import d2.hu.offsiteinvcount.ui.model.InventoryCount;
 
 public class EnvironmentTool {
 
@@ -23,6 +30,14 @@ public class EnvironmentTool {
         return new SimpleDateFormat(pattern).format(date);
     }*/
 
+
+   @RequiresApi(api = Build.VERSION_CODES.N)
+   public static List<InventoryCount.CountBookLine> sortCountBookList(List<InventoryCount.CountBookLine> list){
+       Comparator<InventoryCount.CountBookLine> compareBy = Comparator.comparing(InventoryCount.CountBookLine::getBin)
+               .thenComparing(InventoryCount.CountBookLine::getPartnumber);
+
+       return list.stream().sorted(compareBy).collect(Collectors.toList());
+   }
 
 
     //barcode scan
@@ -50,6 +65,7 @@ public class EnvironmentTool {
         while (counter>=0){
 
             if (partnumber_old.charAt(counter) == ' '){
+                //System.out.println(" == SPACE");
 
             }else{
 
@@ -77,6 +93,17 @@ public class EnvironmentTool {
         }
         return outFormat.format(destDate);
     }
+
+
+//    public void reloadLines(String counbook_number)
+//    {
+//
+//        getCountBookLinesList(counbook_number);
+//    }
+
+
+
+
 
     /*public static String convertDateTimeStringEN(String createdDate){
         SimpleDateFormat inFormat = new SimpleDateFormat(UIConstans.DATE_PATTERN_STANDARD); //datePattern

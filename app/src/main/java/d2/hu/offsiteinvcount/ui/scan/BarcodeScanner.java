@@ -4,15 +4,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
-import java.util.ArrayList;
-
-
-
-
 import com.symbol.emdk.EMDKManager;
 import com.symbol.emdk.EMDKResults;
-import com.symbol.emdk.ProfileConfig;
-import com.symbol.emdk.ProfileManager;
 import com.symbol.emdk.barcode.BarcodeManager;
 import com.symbol.emdk.barcode.ScanDataCollection;
 import com.symbol.emdk.barcode.Scanner;
@@ -20,6 +13,8 @@ import com.symbol.emdk.barcode.ScannerConfig;
 import com.symbol.emdk.barcode.ScannerException;
 import com.symbol.emdk.barcode.ScannerResults;
 import com.symbol.emdk.barcode.StatusData;
+
+import java.util.ArrayList;
 
 public class BarcodeScanner implements EMDKManager.EMDKListener, Scanner.StatusListener, Scanner.DataListener {
 
@@ -67,11 +62,13 @@ public class BarcodeScanner implements EMDKManager.EMDKListener, Scanner.StatusL
 
     //Method to release the EMDK manager
     public static void releaseEmdk() {
+        System.out.println("1. releaseEmdk = "+mBarcodeScanner+"; emdkManager = "+emdkManager);
         if (emdkManager != null) {
             emdkManager.release();
             emdkManager = null;
         }
         mBarcodeScanner = null;
+        System.out.println("2. releaseEmdk = "+mBarcodeScanner+"; emdkManager = "+emdkManager);
     }
 
 

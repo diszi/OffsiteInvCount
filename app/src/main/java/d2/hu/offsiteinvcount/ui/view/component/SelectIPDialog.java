@@ -57,8 +57,6 @@ public class SelectIPDialog extends DialogFragment {
     @OnClick(R.id.button_teszt_sim)
     public void onClickTestSIM(){
         HolderSingleton.getInstance().setServerIPaddress("172.31.147.51");
-      //  System.out.println(" ---> selected IP = "+HolderSingleton.getInstance().getServerIPaddress());
-
         ((LoginActivity)getActivity()).setIPAddress("TEST - SIM");
         dismiss();
     }
@@ -75,7 +73,6 @@ public class SelectIPDialog extends DialogFragment {
     @OnClick(R.id.button_eles_sim)
     public void onClickElesSIM(){
         HolderSingleton.getInstance().setServerIPaddress("172.31.147.41:9080");
-//        ((LoginActivity)getActivity()).setIPAddress(HolderSingleton.getInstance().getServerIPaddress());
         ((LoginActivity)getActivity()).setIPAddress("PRODUCTION - SIM");
         dismiss();
     }
@@ -84,7 +81,6 @@ public class SelectIPDialog extends DialogFragment {
     @OnClick(R.id.button_eles_wifi)
     public void onClickElesWIFI(){
         HolderSingleton.getInstance().setServerIPaddress("192.168.133.41:9080");
-//        ((LoginActivity)getActivity()).setIPAddress(HolderSingleton.getInstance().getServerIPaddress());
         ((LoginActivity)getActivity()).setIPAddress("PRODUCTION - WIFI");
 
         dismiss();

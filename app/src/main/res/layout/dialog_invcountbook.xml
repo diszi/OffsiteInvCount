@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:maxHeight="400dp"
-    android:minWidth="335dp"
     android:orientation="vertical"
     android:background="@drawable/dialog_shape">
+    <!--android:maxHeight="400dp"-->
+    <!--android:minWidth="335dp"-->
 
     <TextView
         android:id="@+id/dialogInvCount_title"
@@ -95,58 +95,79 @@
                     style="@style/Inventory_LabelDetail"
                     android:text="@string/label_rotable" />
 
-                <TextView
-                    android:id="@+id/invCountBook_rotable"
-                    style="@style/Inventory_TextDetail" />
+                <ImageButton
+                    android:id="@+id/invCountBook_rotableIcon"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/ic_pipa"
+                    />
+
+                <ImageButton
+                    android:id="@+id/invCountBook_nonrotableIcon"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/ic_remove" />
+                <!--<TextView-->
+                    <!--android:id="@+id/invCountBook_rotable"-->
+                    <!--style="@style/Inventory_TextDetail" />-->
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/invCountBook_rotablelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/Inventory_LabelDetail"
+                        android:text="@string/label_serialnumber" />
+
+                    <TextView
+                        android:id="@+id/invCountBook_serialnr"
+                        style="@style/Inventory_TextDetail"
+                        android:maxLines="3" />
+                </LinearLayout>
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_marginTop="5dp">-->
+
+                    <!--<TextView-->
+                        <!--style="@style/Inventory_LabelDetail"-->
+                        <!--android:text="@string/label_equipment" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/invCountBook_equipment"-->
+                        <!--style="@style/Inventory_TextDetail" />-->
+                <!--</LinearLayout>-->
+
+
+                <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp">
 
-                <TextView
+                    <TextView
                     style="@style/Inventory_LabelDetail"
-                    android:text="@string/label_serialnumber" />
+                    android:text="@string/label_assetnum" />
 
-                <TextView
-                    android:id="@+id/invCountBook_serialnr"
-                    style="@style/Inventory_TextDetail"
-                    android:maxLines="3" />
-            </LinearLayout>
-
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_marginTop="5dp">-->
-
-                <!--<TextView-->
-                    <!--style="@style/Inventory_LabelDetail"-->
-                    <!--android:text="@string/label_equipment" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/invCountBook_equipment"-->
-                    <!--style="@style/Inventory_TextDetail" />-->
-            <!--</LinearLayout>-->
-
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp">
-
-            <TextView
-            style="@style/Inventory_LabelDetail"
-            android:text="@string/label_assetnum" />
-
-            <TextView
-            android:id="@+id/invCountBook_assetnum"
-            style="@style/Inventory_TextDetail" />
+                    <TextView
+                    android:id="@+id/invCountBook_assetnum"
+                    style="@style/Inventory_TextDetail" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -161,7 +182,9 @@
 
                 <TextView
                     android:id="@+id/invCountBook_curbal"
-                    style="@style/Inventory_TextDetail" />
+                    style="@style/Inventory_TextDetail"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
 
@@ -216,18 +239,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="10dp"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    />
+                    android:textColor="#000"
 
+                    />
+                <!--android:textColor="#6e6e6e"-->
                 <EditText
                     android:id="@+id/invCountBook_physicalcount"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:inputType="numberDecimal" />
+                    android:textSize="20sp"
+                    android:inputType="numberDecimal"
+                    android:textColor="#000"
+                    />
 
                 <ImageButton
                     android:id="@+id/invCountBook_modifyIcon"

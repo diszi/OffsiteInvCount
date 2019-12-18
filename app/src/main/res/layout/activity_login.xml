@@ -81,7 +81,6 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="username"
-            android:text="maxadmin"
             android:inputType="textCapCharacters"
             android:nextFocusDown="@id/actLogin_Password"/>
 
@@ -91,7 +90,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="password"
-            android:text="He11oo70."/>
+
+           />
 
         <Button
             android:id="@+id/actLogin_Button"

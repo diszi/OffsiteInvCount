@@ -54,7 +54,8 @@
     <string name="title_countbooks">Count Books</string>
     <string name="title_countbookdetails">Count book item details: </string>
     <string name="title_chooseequipment">Choose equipment!</string>
-
+    <string name="title_chooseserialnum">Choose Serial number</string>
+    <string name="title_choosebatch">Choose Batch</string>
     <string name="subtitle_countbooklines">Count Book Lines</string>
 
 

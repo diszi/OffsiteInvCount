@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +20,12 @@ import butterknife.ButterKnife;
 import d2.hu.offsiteinvcount.R;
 import d2.hu.offsiteinvcount.ui.model.InventoryCount;
 import d2.hu.offsiteinvcount.ui.view.base.RemoteCallBack;
+import d2.hu.offsiteinvcount.ui.view.inventoryCount.InvCountBookLineChooseActivity;
 import d2.hu.offsiteinvcount.ui.view.inventoryCount.InventoryCountBookLinesActivity;
 import d2.hu.offsiteinvcount.ui.view.inventoryCount.InventoryCountPresenter;
 import d2.hu.offsiteinvcount.util.EnvironmentTool;
 
-public class InvCountBookLineDialog extends DialogFragment {
+public class InvCountBookLineDetailsDialog extends DialogFragment {
 
     public static String SERIALIZABLE_NAME = "InvCountBookLineDialog_serializable";
     public static String COUNT_BOOK = "InvCountBook_serializable";
@@ -41,8 +43,8 @@ public class InvCountBookLineDialog extends DialogFragment {
     TextView countBook_batch;
     @BindView(R.id.invCountBook_partnr)
     TextView countBook_partnr;
-    @BindView(R.id.invCountBook_rotable)
-    TextView countBook_rotable;
+//    @BindView(R.id.invCountBook_rotable)
+//    TextView countBook_rotable;
     @BindView(R.id.invCountBook_serialnr)
     TextView countBook_serialnr;
 //    @BindView(R.id.invCountBook_equipment)
@@ -65,6 +67,13 @@ public class InvCountBookLineDialog extends DialogFragment {
     TextView countBook_countDate;
     @BindView(R.id.invCountBook_countedBy)
     TextView countBook_countedBy;
+    @BindView(R.id.invCountBook_rotableIcon)
+    ImageButton rotableImageIcon;
+    @BindView(R.id.invCountBook_nonrotableIcon)
+    ImageButton nonrotableImageIcon;
+
+    @BindView(R.id.invCountBook_rotablelayout)
+    LinearLayout rotable_layout;
 
     private int item_position;
     private InventoryCount.CountBookLine countBookLineItem;
@@ -76,14 +85,17 @@ public class InvCountBookLineDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("------------------>","START InvCountBookLineDialog");
+        Log.d("------------------>","START InvCountBookLineDetailsDialog");
 
         if (getArguments() != null) {
-            countBookLineItem = (InventoryCount.CountBookLine) getArguments().getSerializable(InvCountBookLineDialog.SERIALIZABLE_NAME); //line item
-            countBookItem = (InventoryCount)getArguments().getSerializable(InvCountBookLineDialog.COUNT_BOOK); //main item
-            item_position = (int)getArguments().getSerializable(InvCountBookLineDialog.ITEM_POSITION);
+            countBookLineItem = (InventoryCount.CountBookLine) getArguments().getSerializable(InvCountBookLineDetailsDialog.SERIALIZABLE_NAME); //line item
+            countBookItem = (InventoryCount)getArguments().getSerializable(InvCountBookLineDetailsDialog.COUNT_BOOK); //main item
+            item_position = (int)getArguments().getSerializable(InvCountBookLineDetailsDialog.ITEM_POSITION);
         }
         item_position=item_position+1;
+
+
+        //System.out.println(" DETAILS dialog :\titem_position="+item_position+"\titem = "+countBookItem.getCountbook()+"\t PN = "+countBookLineItem.getPartnumber());
         presenter = new InventoryCountPresenter();
 
   }
@@ -123,6 +135,10 @@ public class InvCountBookLineDialog extends DialogFragment {
                 countBook_physicalCount_view.setVisibility(View.INVISIBLE);
                 modifyCount_icon.setVisibility(View.INVISIBLE);
                 countBook_physicalCount.setVisibility(View.VISIBLE);
+//                countBook_physicalCount.requestFocus();
+//                   InputMethodManager imm = (InputMethodManager)countBook_physicalCount.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.showSoftInput(countBook_physicalCount,InputMethodManager.SHOW_IMPLICIT);
+
             }else{
                 countBook_physicalCount_view.setVisibility(View.VISIBLE);
                 countBook_physicalCount_view.setText(physicalCount);
@@ -144,9 +160,20 @@ public class InvCountBookLineDialog extends DialogFragment {
         countBook_bin.setText(countBookLineItem.getBin());
         countBook_batch.setText(countBookLineItem.getBatch());
         countBook_partnr.setText(countBookLineItem.getPartnumber());
-        countBook_rotable.setText(String.valueOf(countBookLineItem.isRotable()));
+        //countBook_rotable.setText(String.valueOf(countBookLineItem.isRotable()));
         countBook_serialnr.setText(countBookLineItem.getSerialnumber());
         countBook_assetnum.setText(countBookLineItem.getEquipment());
+
+        if (countBookLineItem.isRotable()){
+            setLayoutHeight(rotable_layout,1);
+            setLayoutWidth(rotableImageIcon,30);
+            setLayoutWidth(nonrotableImageIcon,0);
+        }else{
+            setLayoutHeight(rotable_layout,0);
+            setLayoutWidth(rotableImageIcon,0);
+            setLayoutWidth(nonrotableImageIcon,28);
+        }
+
        // countBook_equipment.setText(countBookLineItem.getEquipment());
         countBook_currentBalance.setText(countBookLineItem.getCurrentBalance());
 
@@ -173,9 +200,19 @@ public class InvCountBookLineDialog extends DialogFragment {
                         public void onSucces(Boolean object) {
                             if (object){
                                 dismiss();
-                                Log.d("-------------->",getResources().getString(R.string.succes_msg));
+                                Log.d("------------------>",getResources().getString(R.string.succes_msg));
                                 Toast.makeText(getActivity(),getResources().getString(R.string.succes_msg),Toast.LENGTH_SHORT).show();
-                                ((InventoryCountBookLinesActivity)getActivity()).reloadLines(countBookItem.getCountbook());
+                                if (getActivity().getClass().equals(InventoryCountBookLinesActivity.class)){
+                                    ((InventoryCountBookLinesActivity)getActivity()).reloadLines(countBookItem.getCountbook());
+                                }else{
+//                                    System.out.println(" GETACTIVITY != ");
+                                    ((InvCountBookLineChooseActivity)getActivity()).reloadCountBook(countBookLineItem.getPartnumber(),countBookLineItem);
+//                                    Intent intent = new Intent(getActivity(),InventoryCountBookLinesActivity.class);
+//                                    intent.putExtra(InventoryCount.SERIALIZABLE_NAME,countBookItem);
+//                                    startActivity(intent);
+
+                                }
+
                             }else{
                                 Log.e("------------->",getResources().getString(R.string.error_invcount_failed));
                                 Toast.makeText(getActivity(),getResources().getString(R.string.error_invcount_failed),Toast.LENGTH_SHORT).show();
@@ -191,5 +228,31 @@ public class InvCountBookLineDialog extends DialogFragment {
         return contentView;
 
     }
+
+
+    private void setLayoutHeight(LinearLayout linearLayout,int parameter){
+        ViewGroup.LayoutParams params = linearLayout.getLayoutParams();
+        if (parameter==0){
+            params.height=0;
+            linearLayout.setLayoutParams(params);
+        }else{
+            params.height= ViewGroup.LayoutParams.WRAP_CONTENT;
+            linearLayout.setLayoutParams(params);
+        }
+    }
+
+    private void setLayoutWidth(ImageButton img,int parameter){
+        ViewGroup.LayoutParams params = img.getLayoutParams();
+        if (parameter==0){
+            params.width=0;
+            img.setLayoutParams(params);
+        }else{
+            params.width=parameter;
+            img.setLayoutParams(params);
+        }
+    }
+
+
+
 
 }

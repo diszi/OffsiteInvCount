@@ -11,7 +11,7 @@ public abstract class BaseScannerActivity extends Activity implements IOnScanner
 
     protected void onDestroy() {
         super.onDestroy();
-        System.out.println(" BaseScannerActivity ----------> onDestroy ---> ");
+        System.out.println(" BaseScannerActivity ----------> onDestroy --->  getBasePresenter.onDestory + BarcodeScanner.releaseEmdk");
         getBasePresenter().onDestroy();
         BarcodeScanner.releaseEmdk();
 

@@ -29,7 +29,7 @@ public class SettingsSingleton {
     }
 
 
-    public void setSharedPreferences(SharedPreferences sharedPreferences){
+    private void setSharedPreferences(SharedPreferences sharedPreferences){
         this.sharedPreferences = sharedPreferences;
     }
 

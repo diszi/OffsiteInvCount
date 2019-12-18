@@ -17,6 +17,7 @@
 
 
     <application
+        android:name=".app.OffsiteInvCountApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,11 +25,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <uses-library android:name="com.symbol.emdk"
+        <uses-library android:name="com.symbol.emdk" />
 
-            />
-        <activity android:name=".ui.view.login.LoginActivity">
-
+        <activity android:name=".ui.view.login.LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -36,12 +37,26 @@
         </activity>
 
         <activity android:name=".ui.view.MainActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"/>
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.view.inventoryCount.InventoryCountListActivity" />
-        <activity android:name=".ui.view.inventoryCount.InventoryCountBookLinesActivity"     />
+        <activity android:name=".ui.view.inventoryCount.InventoryCountListActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.view.inventoryCount.InventoryCountBookLinesActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
+        </activity>
+
+
+        <activity android:name=".ui.view.inventoryCount.InvCountBookLineChooseActivity"
+            android:theme="@style/AppThemeDialog"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+        <!--android:theme="@android:style/Theme.Dialog"-->
+        <!--android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"-->
     </application>
 
 </manifest>

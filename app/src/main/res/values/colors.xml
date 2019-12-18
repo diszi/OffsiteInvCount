@@ -10,6 +10,13 @@
     <color name="maximoLightBlue">#DDF2F9</color>
     <color name="colorItems">#e8e3e3</color>
     <color name="color_transparent">@android:color/transparent</color>
-    <!--<color name="colorLightBlue">#DDF2F9</color>-->
     <color name="colorDarkGray">#bcb7b7</color>
+    <!--<color name="colorMatch">#7dd17d</color>-->
+    <!--<color name="colorWait">#f55b5b</color>-->
+
+    <!--<color name="colorMatch">#aae6aa</color>-->
+    <!--<color name="colorWait">#faa0a0</color>-->
+
+    <color name="colorMatch">#bce6bc</color>
+    <color name="colorWait">#faa0a0</color>
 </resources>

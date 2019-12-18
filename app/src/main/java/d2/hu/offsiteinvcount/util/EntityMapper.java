@@ -26,7 +26,7 @@ public class EntityMapper {
         try{
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(body)));
             NodeList node = doc.getElementsByTagName("PLUSTCB");
-
+           // System.out.println(" -----> EntityMapper.transformInventoryCountList");
             for(int i=0;i<node.getLength();i++){
                 InventoryCount inventoryCountItem = transformCountBook((Element)node.item(i));
                 inventoryCountList.add(inventoryCountItem);
@@ -48,7 +48,7 @@ public class EntityMapper {
         try{
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(body)));
             NodeList node = doc.getElementsByTagName("PLUSTCB");
-
+           // System.out.println(" ------> EntityMapper.transformInventoryCountBookItem");
             for(int i=0;i<node.getLength();i++){
                 inventoryCount = transformCountBook((Element)node.item(i));
             }
@@ -62,6 +62,7 @@ public class EntityMapper {
 
 
     private static InventoryCount transformCountBook(Element element){
+        System.out.println(" -------------> transformCountBook");
         InventoryCount inventoryCount = new InventoryCount();
 
         inventoryCount.setCountbook(getNodeValue(element,"COUNTBOOKNUM"));
@@ -71,12 +72,15 @@ public class EntityMapper {
 
         NodeList countBookLineNode = element.getElementsByTagName("PLUSTCBLINES");
         List<InventoryCount.CountBookLine> countBookLineList = new ArrayList<>();
+        //System.out.println(" ---> line node size = "+countBookLineNode.getLength());
         for(int i=0;i<countBookLineNode.getLength();i++){
             InventoryCount.CountBookLine countBookLine = transformCountBookLine((Element)countBookLineNode.item(i));
+           // System.out.println("LINE["+i+"] = "+countBookLine.getPartnumber()+" - "+countBookLine.getSerialnumber()+" - "+countBookLine.getBatch());
             countBookLineList.add(countBookLine);
         }
-        inventoryCount.setCountBookLineList(countBookLineList);
 
+
+        inventoryCount.setCountBookLineList(countBookLineList);
         return inventoryCount;
     }
 

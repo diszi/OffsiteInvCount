@@ -124,12 +124,14 @@ public class InventoryCountListActivity extends BaseActivity implements Inventor
 
     @Override
     public void showLoading() {
+        //System.out.println(" SHOW loading");
         compProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-            compProgressBar.setVisibility(View.GONE);
+        //System.out.println(" HIDE loading");
+        compProgressBar.setVisibility(View.GONE);
     }
 
 
