@@ -56,34 +56,34 @@ public class SelectIPDialog extends DialogFragment {
 
     @OnClick(R.id.button_teszt_sim)
     public void onClickTestSIM(){
-        HolderSingleton.getInstance().setServerIPaddress("172.31.147.51");
-        ((LoginActivity)getActivity()).setIPAddress("TEST - SIM");
-        dismiss();
+//        HolderSingleton.getInstance().setServerIPaddress("172.31.147.51");
+//        ((LoginActivity)getActivity()).setIPAddress("TEST - SIM");
+//        dismiss();
     }
 
 
     @OnClick(R.id.button_teszt_wifi)
     public void onClickTestWIFI(){
-        HolderSingleton.getInstance().setServerIPaddress("192.168.133.51");
-        ((LoginActivity)getActivity()).setIPAddress("TEST - WIFI");
-        dismiss();
+//        HolderSingleton.getInstance().setServerIPaddress("192.168.133.51");
+//        ((LoginActivity)getActivity()).setIPAddress("TEST - WIFI");
+//        dismiss();
     }
 
 
     @OnClick(R.id.button_eles_sim)
     public void onClickElesSIM(){
-        HolderSingleton.getInstance().setServerIPaddress("172.31.147.41:9080");
-        ((LoginActivity)getActivity()).setIPAddress("PRODUCTION - SIM");
-        dismiss();
+//        HolderSingleton.getInstance().setServerIPaddress("172.31.147.41:9080");
+//        ((LoginActivity)getActivity()).setIPAddress("PRODUCTION - SIM");
+//        dismiss();
     }
 
 
     @OnClick(R.id.button_eles_wifi)
     public void onClickElesWIFI(){
-        HolderSingleton.getInstance().setServerIPaddress("192.168.133.41:9080");
-        ((LoginActivity)getActivity()).setIPAddress("PRODUCTION - WIFI");
-
-        dismiss();
+//        HolderSingleton.getInstance().setServerIPaddress("192.168.133.41:9080");
+//        ((LoginActivity)getActivity()).setIPAddress("PRODUCTION - WIFI");
+//
+//        dismiss();
     }
 
 }

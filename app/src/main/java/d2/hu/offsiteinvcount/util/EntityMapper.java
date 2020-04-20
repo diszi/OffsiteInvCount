@@ -15,6 +15,7 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import d2.hu.offsiteinvcount.ui.model.Inventory;
 import d2.hu.offsiteinvcount.ui.model.InventoryCount;
 
 public class EntityMapper {
@@ -100,7 +101,25 @@ public class EntityMapper {
         countBookLine.setCountedBy(getNodeValue(element,"PHYSCNTBY"));
         countBookLine.setCountedDate(getNodeValue(element,"PHYSCNTDATE"));
 
+        NodeList inventoryNode = element.getElementsByTagName("INVENTORY");
+        if (inventoryNode.getLength()!=0){
+            Inventory inventory = transformInventory((Element)inventoryNode.item(0));
+            countBookLine.setInventory(inventory);
+        }
+
+
+
         return countBookLine;
+    }
+
+    private static Inventory transformInventory(Element element){
+        Inventory inventory = new Inventory();
+
+        inventory.setItemnum(getNodeValue(element,"ITEMNUM"));
+        inventory.setDefaultbin(getNodeValue(element,"BINNUM"));
+        inventory.setIssueunit(getNodeValue(element,"ISSUEUNIT"));
+
+        return inventory;
     }
 
     private static String getNodeValue(Element element, String tag) {

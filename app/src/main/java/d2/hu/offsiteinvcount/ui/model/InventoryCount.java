@@ -76,6 +76,10 @@ public class InventoryCount  implements Serializable {
         private String id;
         private String countedBy;
         private String countedDate;
+//        private String issueunit;
+//        private String defaultbin;
+
+        private Inventory inventory;
 
         public String getBin() {
             return bin;
@@ -171,6 +175,30 @@ public class InventoryCount  implements Serializable {
 
         public void setCountedDate(String countedDate) {
             this.countedDate = countedDate;
+        }
+
+//        public String getIssueunit() {
+//            return issueunit;
+//        }
+//
+//        public void setIssueunit(String issueunit) {
+//            this.issueunit = issueunit;
+//        }
+//
+//        public String getDefaultbin() {
+//            return defaultbin;
+//        }
+//
+//        public void setDefaultbin(String defaultbin) {
+//            this.defaultbin = defaultbin;
+//        }
+
+        public Inventory getInventory() {
+            return inventory;
+        }
+
+        public void setInventory(Inventory inventory) {
+            this.inventory = inventory;
         }
     }
 

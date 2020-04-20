@@ -10,7 +10,7 @@ public interface Login {
 
         void hideLoading();
 
-        void showErrorMessage(String msg);
+        void showErrorMessage(int msg);
 
         void launchMainView();
 

@@ -39,6 +39,8 @@ public class InvCountBookLineDetailsDialog extends DialogFragment {
     Button dialog_cancelBtn;
     @BindView(R.id.invCountBook_bin)
     TextView countBook_bin;
+    @BindView(R.id.invCountBook_def_bin)
+    TextView countBook_defaultbin;
     @BindView(R.id.invCountBook_batch)
     TextView countBook_batch;
     @BindView(R.id.invCountBook_partnr)
@@ -51,8 +53,10 @@ public class InvCountBookLineDetailsDialog extends DialogFragment {
 //    TextView countBook_equipment;
     @BindView(R.id.invCountBook_assetnum)
     TextView countBook_assetnum;
-    @BindView(R.id.invCountBook_curbal)
-    TextView countBook_currentBalance;
+//    @BindView(R.id.invCountBook_curbal)
+//    TextView countBook_currentBalance;
+    @BindView(R.id.invCountBook_issueunit)
+    TextView countBook_issueunit;
     @BindView(R.id.invCountBook_physicalcount)
     EditText countBook_physicalCount;
     @BindView(R.id.invCountBook_physicalcount_view)
@@ -158,6 +162,7 @@ public class InvCountBookLineDetailsDialog extends DialogFragment {
         dialog_title.setText(getResources().getString(R.string.title_countbookdetails));
 
         countBook_bin.setText(countBookLineItem.getBin());
+        countBook_defaultbin.setText(countBookLineItem.getInventory().getDefaultbin());
         countBook_batch.setText(countBookLineItem.getBatch());
         countBook_partnr.setText(countBookLineItem.getPartnumber());
         //countBook_rotable.setText(String.valueOf(countBookLineItem.isRotable()));
@@ -175,8 +180,8 @@ public class InvCountBookLineDetailsDialog extends DialogFragment {
         }
 
        // countBook_equipment.setText(countBookLineItem.getEquipment());
-        countBook_currentBalance.setText(countBookLineItem.getCurrentBalance());
-
+       // countBook_currentBalance.setText(countBookLineItem.getCurrentBalance());
+        countBook_issueunit.setText(countBookLineItem.getInventory().getIssueunit());
 
 
         dialog_saveBtn.setOnClickListener(v -> {
@@ -188,14 +193,15 @@ public class InvCountBookLineDetailsDialog extends DialogFragment {
                 String count = countBook_physicalCount.getText().toString();
                 double count_in_double  = Double.parseDouble(count);
 
-                if (count_in_double > Double.parseDouble(countBookLineItem.getCurrentBalance())){
-                    countBook_physicalCount.setError("Physical count field is must be <= than current balance!");
+                if (countBookLineItem.getCurrentBalance().isEmpty()){
+                    countBook_physicalCount.setError("Current balance field is EMPTY! Please add value to current balance field!");
                     countBook_physicalCount.requestFocus();
+                    countBook_physicalCount.setText(null);
                 }else{
 
-                    countBook_physicalCount.setText(null);
+                countBook_physicalCount.setText(null);
 
-                    presenter.updateInvCountBookLine(count,countBookItem.getCountBookID(), item_position, countBookLineItem, new RemoteCallBack<Boolean>() {
+                presenter.updateInvCountBookLine(count,countBookItem.getCountBookID(), item_position, countBookLineItem, new RemoteCallBack<Boolean>() {
                         @Override
                         public void onSucces(Boolean object) {
                             if (object){

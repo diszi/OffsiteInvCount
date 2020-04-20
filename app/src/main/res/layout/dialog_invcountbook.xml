@@ -58,6 +58,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/Inventory_LabelDetail"
+                    android:text="@string/label_def_bin" />
+
+                <TextView
+                    android:id="@+id/invCountBook_def_bin"
+                    style="@style/Inventory_TextDetail" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="5dp">
 
                 <TextView
@@ -170,23 +185,38 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginTop="5dp">-->
 
-                <TextView
-                    style="@style/Inventory_LabelDetail"
-                    android:text="@string/label_currentbalance" />
+<!--                <TextView-->
+<!--                    style="@style/Inventory_LabelDetail"-->
+<!--                    android:text="@string/label_currentbalance" />-->
 
-                <TextView
-                    android:id="@+id/invCountBook_curbal"
-                    style="@style/Inventory_TextDetail"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/invCountBook_curbal"-->
+<!--                    style="@style/Inventory_TextDetail"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold"/>-->
+<!--            </LinearLayout>-->
 
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/Inventory_LabelDetail"
+                                android:text="@string/label_issueunit" />
+
+                            <TextView
+                                android:id="@+id/invCountBook_issueunit"
+                                style="@style/Inventory_TextDetail" />
+                        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

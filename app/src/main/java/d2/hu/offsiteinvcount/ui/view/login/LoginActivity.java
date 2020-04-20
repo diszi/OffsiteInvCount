@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class LoginActivity extends BaseActivity implements Login.View{
 
     public static Context mContext;
     private LoginPresenter presenter;
-    private SelectIPDialog ipDialog;
+//    private SelectIPDialog ipDialog;
 
     @BindView(R.id.actLogin_Name)
     EditText compLoginName;
@@ -41,8 +42,10 @@ public class LoginActivity extends BaseActivity implements Login.View{
     ProgressBar compProgressBar;
     @BindView(R.id.version)
     TextView compVersion;
-    @BindView(R.id.actSelectIP_button)
-    Button compSelectIP;
+    @BindView(R.id.select_sim)
+    Switch simCard_switcher;
+//    @BindView(R.id.actSelectIP_button)
+//    Button compSelectIP;
 
 
 
@@ -55,7 +58,7 @@ public class LoginActivity extends BaseActivity implements Login.View{
 
         setUpFocus();
         this.mContext = getApplicationContext();
-        ipDialog = new SelectIPDialog();
+//        ipDialog = new SelectIPDialog();
         presenter = new LoginPresenter(this);
         compVersion.setText(EnvironmentTool.getVersionApp());
     }
@@ -104,30 +107,60 @@ public class LoginActivity extends BaseActivity implements Login.View{
         }
 
 
+//        if (cancel) {
+//            focusView.requestFocus();
+//        } else {
+//            if (HolderSingleton.getInstance().getServerIPaddress()!=null){
+//                presenter.login(loginName, password,HolderSingleton.getInstance().getServerIPaddress());
+//
+//            }else{
+//                Toast.makeText(this,getResources().getString(R.string.text_selectIP),Toast.LENGTH_SHORT).show();
+//                Log.d("------------------>",getResources().getString(R.string.text_selectIP));
+//            }
+//        }
+//
+//        compLoginButton.setEnabled(true);
+
+
         if (cancel) {
             focusView.requestFocus();
         } else {
+
+            if (simCard_switcher.isChecked()){
+                String address = "172.31.147.41:9080";
+//                String address = "172.31.147.51";
+                HolderSingleton.getInstance().setServerIPaddress(address);
+
+            }else{
+                String address = "192.168.133.41:9080";
+//                String address = "192.168.133.51";
+
+                HolderSingleton.getInstance().setServerIPaddress(address);
+
+            }
+            System.out.println(" ADDRESS = "+HolderSingleton.getInstance().getServerIPaddress());
+
             if (HolderSingleton.getInstance().getServerIPaddress()!=null){
                 presenter.login(loginName, password,HolderSingleton.getInstance().getServerIPaddress());
 
             }else{
-                Toast.makeText(this,getResources().getString(R.string.text_selectIP),Toast.LENGTH_SHORT).show();
-                Log.d("------------------>",getResources().getString(R.string.text_selectIP));
+                Toast.makeText(this,"Please select IP address!",Toast.LENGTH_SHORT).show();
             }
         }
+
 
         compLoginButton.setEnabled(true);
     }
 
-    @OnClick(R.id.actSelectIP_button)
-    public void onClickSelectIPaddress(){
-        FragmentManager fm = this.getFragmentManager();
-        ipDialog.show(fm,"selectIPdialog");
-    }
-
-    public void setIPAddress(String ip){
-        compSelectIP.setText(ip);
-    }
+//    @OnClick(R.id.actSelectIP_button)
+//    public void onClickSelectIPaddress(){
+//        FragmentManager fm = this.getFragmentManager();
+//        ipDialog.show(fm,"selectIPdialog");
+//    }
+//
+//    public void setIPAddress(String ip){
+//        compSelectIP.setText(ip);
+//    }
 
     @Override
     public void showLoading() {
@@ -140,8 +173,9 @@ public class LoginActivity extends BaseActivity implements Login.View{
     }
 
     @Override
-    public void showErrorMessage(String msg) {
-        Log.e("------------------>",msg);
+    public void showErrorMessage(int msg) {
+//        Log.e("------------------>",msg);
+        System.out.println(" \n\n msg = "+msg);
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 

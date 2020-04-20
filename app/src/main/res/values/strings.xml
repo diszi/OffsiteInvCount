@@ -38,6 +38,7 @@
     <string name="text_selectIP">Please select IP address!</string>
     <string name="text_empty">Empty</string>
     <string name="label_bin">Bin:</string>
+    <string name="label_def_bin">Default Bin:</string>
     <string name="label_batch">Batch:</string>
     <string name="label_partnumber">Part number:</string>
     <string name="title_partnum">Part number</string>
@@ -47,6 +48,7 @@
     <string name="label_equipment">Equipment:</string>
     <string name="label_assetnum">Asset number:</string>
     <string name="label_currentbalance">Current balance:</string>
+    <string name="label_issueunit">Issue unit:</string>
     <string name="label_countdate">Count date:</string>
     <string name="label_countedby">Counted by:</string>
     <string name="label_physicalcount">Physical count:</string>

@@ -43,7 +43,7 @@ public class LoginPresenter extends BasePresenter implements Login.Presenter{
 
                 }, (throwable) -> { // onError Consumer
                     UIThrowable uiThrowable = (UIThrowable) throwable;
-                    loginView.showErrorMessage(uiThrowable.getMessage());
+                    loginView.showErrorMessage(uiThrowable.getMessageId());
                     loginView.hideLoading();
                 }, () -> { // onComplate Action
                     loginView.setUserToContext(userName);
@@ -87,13 +87,16 @@ public class LoginPresenter extends BasePresenter implements Login.Presenter{
                 }
             } catch (Exception ex) {
                 Log.e("", "---------->", ex);
-                if (ex.getMessage().equals("Network is unreachable")){
-                    emitter.onError(new UIThrowable(R.string.error_network));
-                    //Log.e("------------------>","Network Error : network is unreachable");
-                }else{
-                    emitter.onError(new UIThrowable(R.string.error_unknown));
-                   // Log.e("------------------>","Unknown Error");
-                }
+//                System.out.println(" \n\n ex.getMSG = "+ex.getMessage());
+                emitter.onError(new UIThrowable(R.string.error_network_2));
+//                loginView.showErrorMessage(ex.getMessage());
+//                if (ex.getMessage().equals("Network is unreachable")){
+//                    emitter.onError(new UIThrowable(R.string.error_network));
+//                    //Log.e("------------------>","Network Error : network is unreachable");
+//                }else{
+//                    emitter.onError(new UIThrowable(R.string.error_unknown));
+//                   // Log.e("------------------>","Unknown Error");
+//                }
 
 
             }

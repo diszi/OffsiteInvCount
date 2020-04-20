@@ -3,6 +3,8 @@ package d2.hu.offsiteinvcount.util;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -94,6 +96,20 @@ public class EnvironmentTool {
         return outFormat.format(destDate);
     }
 
+
+
+    public static String encodeStringtoUTF8(String value){
+        String returnValue="";
+        try {
+            byte [] b = value.getBytes(StandardCharsets.UTF_8);
+            String result= new String(b,"UTF-8");
+            returnValue = result.replaceAll(" ","%20");
+            returnValue = returnValue.replaceAll("#","%23");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
 
 //    public void reloadLines(String counbook_number)
 //    {

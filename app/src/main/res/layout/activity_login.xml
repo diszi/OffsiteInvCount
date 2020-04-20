@@ -113,18 +113,31 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/actSelectIP_button"
-        android:layout_width="wrap_content"
-        android:layout_weight="1.0"
-        android:layout_height="match_parent"
-        android:text="Select Environment"
-        android:layout_marginTop="15dp"
-        android:padding="15dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_gravity="center"
-        android:background="#e6e6eb"
-        />
+<!--    <Button-->
+<!--        android:id="@+id/actSelectIP_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_weight="1.0"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Select Environment"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:padding="15dp"-->
+<!--        android:textColor="@color/colorPrimary"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:background="#e6e6eb"-->
+<!--        />-->
 
+
+    <Switch
+        android:id="@+id/select_sim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:paddingEnd="53dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:text="SIM  "
+        android:layout_gravity="right"
+        android:textSize="14sp"
+        />
 
 </LinearLayout>

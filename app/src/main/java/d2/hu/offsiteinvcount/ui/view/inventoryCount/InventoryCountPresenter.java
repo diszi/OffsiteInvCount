@@ -13,6 +13,7 @@ import d2.hu.offsiteinvcount.ui.model.InventoryCount;
 import d2.hu.offsiteinvcount.ui.view.base.BasePresenter;
 import d2.hu.offsiteinvcount.ui.view.base.RemoteCallBack;
 import d2.hu.offsiteinvcount.util.EntityMapper;
+import d2.hu.offsiteinvcount.util.EnvironmentTool;
 import d2.hu.offsiteinvcount.util.HttpCall;
 import d2.hu.offsiteinvcount.util.HttpRequestAsyncTask;
 
@@ -119,7 +120,7 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
     @SuppressLint("StaticFieldLeak")
     @Override
     public void updateInvCountBookLine(String phyCount, String countBookID, int line_number, InventoryCount.CountBookLine countBookItem, RemoteCallBack<Boolean> remoteCallBack) {
-        Log.d("------------------>" ,"REST PUT : Inventory count book line UPDATE");
+        Log.d("------------------>" ,"REST PUT : Inventory count book line UPDATE ==> LOTNUM="+countBookItem.getBatch());
 
         tempURL.delete(0,tempURL.length());
 
@@ -149,9 +150,10 @@ public class InventoryCountPresenter extends BasePresenter implements InventoryC
             tempURL.append("&PLUSTCBLINES."+line_number+".MATCH=0");
         }
 
+        String encodedURL = EnvironmentTool.encodeStringtoUTF8(tempURL.toString());
         HttpCall httpCall = new HttpCall();
         httpCall.setMethod(HttpCall.RequestMethod.PUT);
-        httpCall.setUrl(CustomerProperties.UPDATE_INVENTORY_COUNT+"/"+tempURL.toString());
+        httpCall.setUrl(CustomerProperties.UPDATE_INVENTORY_COUNT+"/"+encodedURL);
         new HttpRequestAsyncTask(){
             @Override
             public void onResponse(String response) {
